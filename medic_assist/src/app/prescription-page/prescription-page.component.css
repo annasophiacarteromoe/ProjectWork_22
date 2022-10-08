@@ -1,0 +1,14 @@
+input {
+    padding: 10px 5px 10px 5px;
+    margin-left: 10px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #eee;
+    outline: none ! important;
+}
+
+.button {
+    padding: 100px;
+}
