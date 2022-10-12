@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SupabaseService } from './service/supabase.service';
+import { SupabaseService } from '../supabaseService/supabase.service';
 import { MedicationInterface } from './interfaces/medication-interface';
 
 @Component({
