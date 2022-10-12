@@ -1,1 +1,8 @@
 <p>search-page works!</p>
+
+
+<div *ngFor="let t of medicationData; let i=index"> 
+    {{t | json}}
+    {{t.ID}}
+
+</div>

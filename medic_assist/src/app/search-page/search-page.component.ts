@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SupabaseService } from './service/supabase.service';
+import { MedicationInterface } from './interfaces/medication-interface';
 
 @Component({
   selector: 'app-search-page',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor() { }
+  medicationData: MedicationInterface[] = [];
 
-  ngOnInit(): void {
+  constructor(private readonly supabase: SupabaseService) {}
+
+  ngOnInit(){
+    // var l = this.supabase.x
+    // console.log((await l).data
+    this.getMediData();
+  }
+
+  async getMediData() {
+    var mediData = (await this.supabase.allMedication).data;
+    console.log( mediData)
+    this.medicationData = mediData!
+
   }
 
 }
