@@ -1,1 +1,100 @@
-<p>contact-page works!</p>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+
+<div class="container">
+    
+    <div class="row">
+        <h2>Contact Method</h2>
+        <hr>
+        <div>
+            <i class="material-icons">contact_phone</i> <font size="5" face="monospace"> &emsp; (+45) xxxxoooo </font>
+            <br>
+            <br>
+            <i class="material-icons">mail</i> <font size="5" face="monospace"> &emsp; test@gmail.com </font>
+            <br>
+            <hr>
+        </div>
+
+            <h2>Online Feedback</h2>
+            <hr>
+
+        <div>
+            <form [formGroup]="ReportForm" (ngSubmit)="OnPostQuestion()">
+                <div class="form-group">
+                    <label for="Name"> Name </label>
+                    <input
+                    type="string"
+                    id="Name"
+                    formControlName="name"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="Email"> Email </label>
+                    <input
+                    type="string"
+                    id="Email"
+                    formControlName="email"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback"> Feedback </label>
+                    <textarea
+                      class="form-control"
+                      id="Feedback"
+                      formControlName="feedback"
+                    ></textarea>
+                </div>
+
+                <button class="btn btn-primary" type="submit"> Submit </button>
+            </form>
+        </div>
+
+        <h2>Previous Question</h2>
+        <hr>
+
+        <div fxLayout="row" fxLayoutAlign="center">
+            
+            <mat-card class="verticle-space asd cardPardding" *ngFor="let q of QuestionAnswer; let i=index">
+                <mat-card-title>
+                    Name: {{ q.name }}
+                    Email: {{ q.email }}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    Feedback: {{ q.feedback }}
+                </mat-card-subtitle>
+        
+                <mat-card-content>
+                    Answer: {{ q.answer }}
+                </mat-card-content>
+        
+                <mat-card-actions>
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      (click)="OnRemoveQuestion(q.id, i)"
+                    >
+                      Confirm
+                    </button>
+                </mat-card-actions>
+
+            </mat-card>
+            
+        </div>
+
+    </div>
+</div>
+
+<hr>
+
+
+<!--
+<ul>
+    <li *ngFor="let q of QuestionAnswer; let i=index">
+        <button mat-raised-button (click)="OnRemoveQuestion(q.id, i)"> Confirm </button> {{q | json}}
+    </li>
+</ul>
+-->

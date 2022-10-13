@@ -8,6 +8,12 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
