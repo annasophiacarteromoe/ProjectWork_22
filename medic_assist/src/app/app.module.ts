@@ -8,14 +8,12 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import {MatNativeDateModule} from '@angular/material/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,18 +23,16 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     HomePageComponent,
     SearchPageComponent,
     ContactPageComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatNativeDateModule,
-    FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+
+    MatButtonModule,
     MatFormFieldModule,
-    MatAutocompleteModule
-    
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
