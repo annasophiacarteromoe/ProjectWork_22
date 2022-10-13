@@ -1,8 +1,44 @@
 <p>search-page works!</p>
 
 
-<div *ngFor="let t of medicationData; let i=index"> 
-    {{t | json}}
-    {{t.ID}}
+<!-- 
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Assignee</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form> -->
+  
+  
 
-</div>
+
+
+
+
+
+<table>
+    <tr>
+        <th>Medication name</th>
+        <th>Description</th>
+        <th>Dosage</th>
+        <th>Side effects</th>
+        <th>Warnings</th>
+    </tr>
+<tr *ngFor="let data of medicationData; let i=index"> 
+
+   <td>{{data.Medication_name}}</td>
+   <td>{{data.Description}}</td>
+   <td>{{data.Dosage}}</td>
+   <td>{{data.Side_effects}}</td>
+   <td>{{data.Warnings}}</td>
+
+
+</tr>
+</table>
+
+

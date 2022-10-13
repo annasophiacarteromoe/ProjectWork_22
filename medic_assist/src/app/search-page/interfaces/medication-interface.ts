@@ -3,7 +3,7 @@ export interface MedicationInterface {
     Description: string;
     Side_effects: string;
     Symptoms: Array<string>;
-    Warning: string;
+    Warnings: string;
     ID: number;
     Dosage: string
 
