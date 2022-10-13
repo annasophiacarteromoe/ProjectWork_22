@@ -32,6 +32,10 @@ export class SupabaseService {
   
   }
 
+  get mediName(){
+    return this.supabase.from('Medication').select('Medication_name')
+  }
+
 
   
 
