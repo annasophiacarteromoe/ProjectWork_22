@@ -4,9 +4,9 @@
 <form class="example-form">
   <mat-form-field class="example-full-width" appearance="fill">
     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.Medication_name}}
+        {{option.Symptoms}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
