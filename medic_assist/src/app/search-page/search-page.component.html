@@ -1,19 +1,8 @@
-<p>search-page works!</p>
-
-<div>
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.Medication_name}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
-</div>
+<p> </p>
+<p></p>
 
 
+<!-- 
 <table>
   <tr>
       <th>Medication name</th>
@@ -32,12 +21,24 @@
 
 
 </tr>
-</table>
+</table> -->
 
-  
-<p></p>
-<p></p>
-<p></p>
+<div>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+      
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="pop" >
+          
+          {{option.Symptoms}}
+        
+        </mat-option>
+      </mat-autocomplete>
+    
+    </mat-form-field>
+  </form>
+</div>
 
 
 

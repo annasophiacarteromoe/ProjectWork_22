@@ -16,6 +16,8 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
+// import { MedicationSearchPageComponent } from './search-page/search-by-meds/medication-search-page/medication-search-page.component';
+// import { SymptomSearchPageComponent } from './search-page/search-by-symptoms/symptom-search-page/symptom-search-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MatInputModule } from '@angular/material/input';
     NavigationBarComponent,
     HomePageComponent,
     SearchPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    // MedicationSearchPageComponent,
+    // SymptomSearchPageComponent
   ],
   imports: [
     BrowserModule,
