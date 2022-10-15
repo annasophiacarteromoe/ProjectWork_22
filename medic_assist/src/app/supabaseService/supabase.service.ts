@@ -28,7 +28,7 @@ export class SupabaseService {
 
 
   get allMedication(){
-    return this.supabase.from('Medication2').select()
+    return this.supabase.from('Medication').select()
   
   }
 
