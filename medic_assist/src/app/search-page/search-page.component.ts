@@ -17,10 +17,15 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
   myControl = new FormControl<string | MedicationInterface>('');
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
+  filteredSearchOptions!: Observable<MedicationInterface[]>;
+
+  _searchByMeds: boolean = true;  
+  dis:boolean = true;
 
   constructor(private readonly supabase: SupabaseService) {}
 
   ngOnInit(){
+   
 
     this.getMediData();
   }
@@ -30,10 +35,18 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        const name = typeof value === 'string' ? value : value?.Symptoms;
-        return name ? this.searchBySymptoms(name as string) : this.medicationData.slice();
+        const name = typeof value === 'string' ? value : this._searchByMeds ? value?.Medication_name : value?.Symptoms;
+        return name ? this._filter(name as string) : this.medicationData.slice();
       }),
     );
+
+    this.filteredSearchOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value =>{
+        const name = typeof value === 'string' ? value : this._searchByMeds ? value?.Medication_name : value?.Symptoms;
+        return name ? this._filter(name as string) : this.medicationData.slice();
+      })
+    )
       
   }
 
@@ -42,7 +55,7 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
 
   async getMediData() {
     var mediData = (await this.supabase.allMedication).data;
-    console.log( mediData)
+    console.log( mediData);
     this.medicationData = mediData!
     // var x = this.searchQueryTransform('vision,fatigue')
     // console.log(x)
@@ -56,29 +69,33 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
   //   this.options = mediNameArr!
   //   }
 
-  displayFn(displayData: MedicationInterface): string {
-    return displayData && displayData.Symptoms ? displayData.Symptoms : '';
-  }
+ 
 
   private _filter(name: string): MedicationInterface[] {
-    const filterValue = name.toLowerCase();
-
-    return this.medicationData.filter(option => option.Medication_name.toLowerCase().includes(filterValue));
-  }
-
-  searchBySymptoms(name: string): MedicationInterface[]{
     const filterValue = this.searchQueryTransform(name);
-
-  console.log(this.medicationData.filter(op => op.Symptoms.toLowerCase().match(new RegExp(filterValue))))
-  return this.medicationData.filter(op => op.Symptoms.toLowerCase().match(new RegExp(filterValue)))
+    return this.medicationData.filter(option => this._searchByMeds ? option.Medication_name.toLowerCase().match(new RegExp(filterValue)): option.Symptoms.toLowerCase().match(new RegExp(filterValue)));
   }
+
+  displayFn(displayData: MedicationInterface): string { // searchByMeds undefined https://developercommunity.visualstudio.com/t/angular-typescript-class-objects-not-accessible-in/555338
+    
+    var display = this._searchByMeds ? displayData?.Medication_name : displayData?.Symptoms;
+
+    return displayData && display ? display : '';
+  }
+  // searchBySymptoms(name: string): MedicationInterface[]{
+  //   const filterValue = this.searchQueryTransform(name);
+
+  // console.log(this.medicationData.filter(op => op.Symptoms.toLowerCase().match(new RegExp(filterValue))))
+  // return this.medicationData.filter(op => op.Symptoms.toLowerCase().match(new RegExp(filterValue)))
+  // }
 
   searchQueryTransform(name: string): string{
-    var array  =name.toLowerCase().replace(/,/gi,')(?=.*');
-    array = '(?=.*'+array +')'
+    var query = name.toLowerCase().replace(/,/gi,')(?=.*');
+    query = '(?=.*'+ query +')';
     
+   
 
-    return array
+    return query;
   }
 
 }

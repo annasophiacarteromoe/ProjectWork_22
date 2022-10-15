@@ -14,8 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 // import { MedicationSearchPageComponent } from './search-page/search-by-meds/medication-search-page/medication-search-page.component';
 // import { SymptomSearchPageComponent } from './search-page/search-by-symptoms/symptom-search-page/symptom-search-page.component';
 
@@ -40,7 +43,10 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatCardModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatSlideToggleModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
