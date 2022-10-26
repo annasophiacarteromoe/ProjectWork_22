@@ -31,12 +31,6 @@ export class SupabaseService {
     return this.supabase.from('Medication2').select()
   
   }
-
-  get mediName(){
-    return this.supabase.from('Medication').select('Medication_name')
-  }
-
-
   
 
   

@@ -1,7 +1,7 @@
 <p> </p>
 <p></p>
 
-<!-- how to make html code change - depending on variable -->
+<!-- add buttons and make it pretty -->
 
 <div>
   <form class="example-form">
@@ -9,16 +9,16 @@
       <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
       
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           
-          {{option.Symptoms}}
+          {{option.Medication_name}}
         
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
   </form>
 
-  <mat-slide-toggle [(ngModel)]="_searchByMeds" class="switch">Slide Toggle Checked {{_searchByMeds}} </mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="_searchByMeds" (change)=promtSearchBy() class="switch">Your are search by: {{content}} </mat-slide-toggle>
 
 </div>
 
@@ -26,21 +26,26 @@
   <tr>
       <th>Medication name</th>
       <th>Description</th>
-      <th>Dosage</th>
       <th>Side effects</th>
       <th>Warnings</th>
+      <th>Add Medication</th>
   </tr>
 <tr *ngFor="let data of filteredOptions | async; let i=index"> 
 
  <td>{{data.Medication_name}}</td>
  <td>{{data.Description}}</td>
- <td>{{data.Dosage}}</td>
  <td>{{data.Side_effects}}</td>
  <td>{{data.Warnings}}</td>
+ <td><button>Add Medication</button></td>
 
 
 </tr>
 </table>
+
+<script>
+
+  document.getElementById("id").innerHTML = "what"
+</script>
 
 
 
