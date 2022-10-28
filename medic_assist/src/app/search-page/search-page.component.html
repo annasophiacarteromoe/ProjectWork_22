@@ -2,6 +2,10 @@
 <p></p>
 
 <!-- add buttons and make it pretty -->
+<!-- TODO:
+- ask about autocomplete (leave user input on search bar)
+- On first load/reload table should contain all the entries 
+- maybe changing the html code-->
 
 <table id="searchTable">
   <td id="searchTd">
@@ -12,7 +16,7 @@
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           
-          {{option.Medication_name}}
+          {{option.Medication_name}} <!-- meanig here to .Symptoms-->
         
         </mat-option>
       </mat-autocomplete>
@@ -45,5 +49,5 @@
 
 </tr>
 </table>
-<p> </p>
+<p></p>
 <p></p>
