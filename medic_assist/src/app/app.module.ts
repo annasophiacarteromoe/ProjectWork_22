@@ -19,8 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-// import { MedicationSearchPageComponent } from './search-page/search-by-meds/medication-search-page/medication-search-page.component';
-// import { SymptomSearchPageComponent } from './search-page/search-by-symptoms/symptom-search-page/symptom-search-page.component';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -46,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSlideToggleModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

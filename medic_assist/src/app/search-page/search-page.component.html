@@ -3,7 +3,8 @@
 
 <!-- add buttons and make it pretty -->
 
-<div>
+<table id="searchTable">
+  <td id="searchTd">
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
@@ -18,42 +19,31 @@
     </mat-form-field>
   </form>
 
-  <mat-slide-toggle [(ngModel)]="_searchByMeds" (change)=promtSearchBy() class="switch">Your are search by: {{content}} </mat-slide-toggle>
+</td>
+<td id="searchTd">
+  <mat-slide-toggle [(ngModel)]="_searchByMeds" (change)=promtSearchBy() class="switch">Searching by: {{content}} </mat-slide-toggle>
+</td>
 
-</div>
+</table>
 
-<table>
+<table id="resultsTable">
   <tr>
-      <th>Medication name</th>
-      <th>Description</th>
-      <th>Side effects</th>
-      <th>Warnings</th>
-      <th>Add Medication</th>
+      <th id="resultsTh">Medication name</th>
+      <th id="resultsTh">Description</th>
+      <th id="resultsTh">Side effects</th>
+      <th id="resultsTh">Warnings</th>
+      <th id="resultsTh">Add Medication</th>
   </tr>
 <tr *ngFor="let data of filteredOptions | async; let i=index"> 
 
- <td>{{data.Medication_name}}</td>
- <td>{{data.Description}}</td>
- <td>{{data.Side_effects}}</td>
- <td>{{data.Warnings}}</td>
- <td><button>Add Medication</button></td>
+ <td id="resultsTd">{{data.Medication_name}}</td>
+ <td id="resultsTd">{{data.Description}}</td>
+ <td id="resultsTd">{{data.Side_effects}}</td>
+ <td id="resultsTd">{{data.Warnings}}</td>
+ <td id="resultsTd"x><button>Add Medication</button></td>
 
 
 </tr>
 </table>
-
-<script>
-
-  document.getElementById("id").innerHTML = "what"
-</script>
-
-
-
-
-
-
-
-
-
-
-
+<p> </p>
+<p></p>

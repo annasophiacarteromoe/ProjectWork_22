@@ -24,10 +24,11 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
   content:string = "Medication"
   co:MedicationInterface[]=[];
   x!: any;
+
   constructor(private readonly supabase: SupabaseService) {}
 
   promtSearchBy(){
-    console.log(this._searchByMeds);
+    // console.log(this._searchByMeds);
     this.content = this._searchByMeds ? "Medication" : "Symptoms";
   }
 
@@ -48,7 +49,7 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
 
   async getMediData() {
     var mediData = (await this.supabase.allMedication).data;
-    console.log( mediData);
+    // console.log( mediData);
     this.medicationData = mediData!
 
   }
@@ -70,8 +71,8 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
     return query;
   }
 
-  changeAutocompletion(option: MedicationInterface){
-    this.x = this._searchByMeds ? option.Medication_name : option.Symptoms;
+  changeAutocompletion(option: MedicationInterface) {
+   return this._searchByMeds ? option.Medication_name : option.Symptoms;
   }
 
 }
