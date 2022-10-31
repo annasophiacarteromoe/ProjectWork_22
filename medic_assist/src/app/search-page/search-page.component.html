@@ -14,9 +14,14 @@
       <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
       
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="line-height: 1.5">
           
-          {{option.Medication_name}}
+            <!-- <p>{{option.Medication_name}}</p> -->
+            <span>
+            <div>{{option.Medication_name}}</div>
+            <div style="font-size:small; color:grey;">{{option.Symptoms}}</div>
+          </span>
+          
           <!-- {{option.Symptoms}}  meanig here to .Symptoms -->
         
         </mat-option>
@@ -37,6 +42,7 @@
       <th id="resultsTh">Description</th>
       <th id="resultsTh">Side effects</th>
       <th id="resultsTh">Warnings</th>
+      <th id="resultsTh">Symptoms</th>
       <th id="resultsTh">Add Medication</th>
   </tr>
 <tr *ngFor="let data of filteredOptions | async; let i=index"> 
@@ -45,6 +51,7 @@
  <td id="resultsTd">{{data.Description}}</td>
  <td id="resultsTd">{{data.Side_effects}}</td>
  <td id="resultsTd">{{data.Warnings}}</td>
+ <td id="resultsTd">{{data.Symptoms}}</td>
  <td id="resultsTd"x><button>Add Medication</button></td>
 
 
