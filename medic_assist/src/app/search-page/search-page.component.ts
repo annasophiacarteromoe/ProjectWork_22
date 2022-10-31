@@ -3,6 +3,7 @@ import { SupabaseService } from '../supabaseService/supabase.service';
 import { MedicationInterface } from './interfaces/medication-interface';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { MatInput } from '@angular/material/input';
 
 // Questions: 
 // - show whole table after loading the page
@@ -13,15 +14,15 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrls: ['./search-page.component.css'],
 })
 
-export class SearchPageComponent implements OnInit, AfterViewInit {
+export class SearchPageComponent implements OnInit {
 
   myControl = new FormControl<string | MedicationInterface>('');
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
-
-  _searchByMeds: boolean = true;  
-  content:string = "Medication"
+  // inputVal: string | MedicationInterface = "";
+  _searchByMeds: boolean = false;  
+  content:string = "Symptoms"
   co:MedicationInterface[]=[];
   x!: any;
 
@@ -33,35 +34,36 @@ export class SearchPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(){
-    this.getMediData();
+    this.supabase.allMedication.then(data => {
+      this.medicationData = data.data!
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(""),
+        map(value => {
+          // if(this._searchByMeds) {
+            // this.inputVal = value!
+          // }
+          // this.inputVal = typeof value === 'string' ? value : value?.Medication_name!;
+          const name = typeof value === 'string' ? value : this._searchByMeds ? value?.Medication_name : value?.Symptoms;
+          return name!.length > 0 ? this._filter(name as string) : this.medicationData.slice();
+        }),
+      );
+    });
   }
-
-  ngAfterViewInit(){
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        const name = typeof value === 'string' ? value : this._searchByMeds ? value?.Medication_name : value?.Symptoms;
-        return name ? this._filter(name as string) : this.medicationData.slice();
-      }),
-    );
-  }
-
-  async getMediData() {
-    var mediData = (await this.supabase.allMedication).data;
-    // console.log( mediData);
-    this.medicationData = mediData!
-
-  }
-
 
   private _filter(name: string): MedicationInterface[] {
     const filterValue = this.searchQueryTransform(name);
     return this.medicationData.filter(option => this._searchByMeds ? option.Medication_name.toLowerCase().match(new RegExp(filterValue)): option.Symptoms.toLowerCase().match(new RegExp(filterValue)));
   }
 
-  displayFn(displayData: MedicationInterface): string {
-    return displayData && displayData?.Medication_name ? displayData?.Medication_name : '';
+  displayFn(displayData: MedicationInterface): any {
+    // return this.myControl.value ?? "not set"
+    console.log('d')
+    console.log(this.myControl);
+    console.log('dd')
+    // return this.inputVal
+    return displayData && displayData?.Medication_name ? displayData?.Medication_name : ''; // this
+    
+    // return this.myControl.value?.toString.name;
   }
 
   searchQueryTransform(name: string): string{

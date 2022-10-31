@@ -16,7 +16,8 @@
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           
-          {{option.Medication_name}} <!-- meanig here to .Symptoms-->
+          {{option.Medication_name}}
+          <!-- {{option.Symptoms}}  meanig here to .Symptoms -->
         
         </mat-option>
       </mat-autocomplete>
