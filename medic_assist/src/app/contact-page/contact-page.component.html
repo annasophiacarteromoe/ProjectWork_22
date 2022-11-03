@@ -6,6 +6,7 @@
 <div class="container">
     
     <div class="row">
+
         <h2>Contact Method</h2>
         <hr>
         <div>
@@ -23,7 +24,7 @@
         <div>
             <form [formGroup]="ReportForm" (ngSubmit)="OnPostQuestion()">
                 <div class="form-group">
-                    <label for="Name"> Name </label>
+                    <label for="Name"> *Name </label>
                     <input
                     type="string"
                     id="Name"
@@ -32,7 +33,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="Email"> Email </label>
+                    <label for="Email"> *Email </label>
                     <input
                     type="string"
                     id="Email"
@@ -49,7 +50,19 @@
                     ></textarea>
                 </div>
 
-                <button class="btn btn-primary" type="submit"> Submit </button>
+                <button class="btn btn-primary" [disabled]="!ReportForm.valid" type="submit"> Submit </button>
+                <br>
+                <span *ngIf="ReportForm.get('name')?.touched &&
+                ReportForm.get('name')?.invalid; else EmailChecker">
+                Name must not be empty.
+                </span>
+                <ng-template #EmailChecker>
+                    <span *ngIf="ReportForm.get('email')?.touched &&
+                    ReportForm.get('email')?.invalid">
+                    Email is not valid.
+                    </span>
+                </ng-template>
+
             </form>
         </div>
 

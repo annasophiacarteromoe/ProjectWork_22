@@ -32,7 +32,6 @@ import {ContactPageComponent} from "./contact-page/contact-page.component";
     NavigationBarComponent,
     SearchPageComponent,
     ContactPageComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -43,6 +42,7 @@ import {ContactPageComponent} from "./contact-page/contact-page.component";
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
+    MatDialogModule,
     MatAutocompleteModule,
     MatInputModule,
     MatSlideToggleModule,
@@ -51,6 +51,7 @@ import {ContactPageComponent} from "./contact-page/contact-page.component";
     MatTableModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // entryComponents: [PopUpComponent]
 })
 export class AppModule { }
