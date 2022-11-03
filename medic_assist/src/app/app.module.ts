@@ -19,6 +19,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table'
+import {SearchPageComponent} from "./search-page/search-page.component";
+import {ContactPageComponent} from "./contact-page/contact-page.component";
 
 
 
@@ -26,8 +28,10 @@ import { MatTableModule } from '@angular/material/table'
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent, 
-    NavigationBarComponent
+    HomePageComponent,
+    NavigationBarComponent,
+    SearchPageComponent,
+    ContactPageComponent,
 
   ],
   imports: [
