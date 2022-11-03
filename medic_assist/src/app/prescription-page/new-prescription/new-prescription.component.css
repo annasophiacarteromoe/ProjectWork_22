@@ -1,0 +1,9 @@
+select {
+    background-color: #eee;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+select option {
+    padding: 5px;
+}
