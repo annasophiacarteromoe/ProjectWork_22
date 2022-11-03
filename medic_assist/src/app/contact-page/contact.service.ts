@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ContactService {
 
   url = "https://medicassist-ef10c-default-rtdb.firebaseio.com/contact.json";
+  alertText = "Submission Success!";
 
   // delete_url + id.json
   delete_url = "https://medicassist-ef10c-default-rtdb.firebaseio.com/contact/"
@@ -26,4 +27,5 @@ export class ContactService {
   RemoveQuestion(id: string){
     return this.http.delete(`${this.delete_url}/${id}.json`);
   }
+
 }

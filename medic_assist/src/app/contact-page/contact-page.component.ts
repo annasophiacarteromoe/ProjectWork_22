@@ -5,6 +5,8 @@ import { QuestionInterface } from './question-interface';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-contact-page',
@@ -13,7 +15,7 @@ import { map } from 'rxjs/operators';
 })
 export class ContactPageComponent implements OnInit {
 
-  constructor(private service: ContactService, private jumper: Router) { }
+  constructor(private service: ContactService, private jumper: Router, private dialogRef: MatDialog) { }
   ReportForm!: FormGroup;
   QuestionAnswer: QuestionInterface[] = [];
 
@@ -30,6 +32,8 @@ export class ContactPageComponent implements OnInit {
 
   OnPostQuestion(){
     
+    alert("Submission Success!")
+
     var Question: QuestionInterface = {
       id: "",
       name: this.ReportForm.value.name,
@@ -37,8 +41,9 @@ export class ContactPageComponent implements OnInit {
       feedback: this.ReportForm.value.feedback,
       answer: ""
     }
-    console.log(Question);
     this.service.PostQuestion(Question);
+
+    // this.OpenDialog();
     this.jumper.navigate(['/']);
 
   }
@@ -65,6 +70,18 @@ export class ContactPageComponent implements OnInit {
   OnRemoveQuestion(id:string, idx:number){
     this.QuestionAnswer.splice(idx, 1);
     this.service.RemoveQuestion(id).subscribe();
+  }
+
+  OpenDialog(){
+    const dialogConfig = new MatDialogConfig();
+
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.position = {
+        'top': '0',
+        left: '0'
+      };
+    this.dialogRef.open(PopUpComponent, dialogConfig);
   }
 
 }

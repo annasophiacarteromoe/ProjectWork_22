@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from "@angular/material/dialog";
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     NavigationBarComponent,
     HomePageComponent,
     SearchPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    PopUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +36,13 @@ import { MatCardModule } from '@angular/material/card';
 
     MatButtonModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // entryComponents: [PopUpComponent]
 })
 export class AppModule { }
