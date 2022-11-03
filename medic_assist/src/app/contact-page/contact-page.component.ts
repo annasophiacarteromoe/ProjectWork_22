@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-contact-page',
@@ -31,7 +30,7 @@ export class ContactPageComponent implements OnInit {
 
 
   OnPostQuestion(){
-    
+
     alert("Submission Success!")
 
     var Question: QuestionInterface = {
@@ -81,7 +80,6 @@ export class ContactPageComponent implements OnInit {
         'top': '0',
         left: '0'
       };
-    this.dialogRef.open(PopUpComponent, dialogConfig);
   }
 
 }
