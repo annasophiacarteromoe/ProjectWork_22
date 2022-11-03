@@ -5,9 +5,6 @@ import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { MatInput } from '@angular/material/input';
 
-// Questions: 
-// - show whole table after loading the page
-
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
@@ -20,16 +17,12 @@ export class SearchPageComponent implements OnInit {
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
-  // inputVal: string | MedicationInterface = "";
-  _searchByMeds: boolean = false;  
-  content:string = "Symptoms"
-  co:MedicationInterface[]=[];
-  x!: any;
 
+  _searchByMeds: boolean = false;
+  content:string = "Symptoms"
   constructor(private readonly supabase: SupabaseService) {}
 
   promtSearchBy(){
-    // console.log(this._searchByMeds);
     this.content = this._searchByMeds ? "Medication" : "Symptoms";
   }
 
@@ -39,10 +32,6 @@ export class SearchPageComponent implements OnInit {
       this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(""),
         map(value => {
-          // if(this._searchByMeds) {
-            // this.inputVal = value!
-          // }
-          // this.inputVal = typeof value === 'string' ? value : value?.Medication_name!;
           const name = typeof value === 'string' ? value : this._searchByMeds ? value?.Medication_name : value?.Symptoms;
           return name!.length > 0 ? this._filter(name as string) : this.medicationData.slice();
         }),
@@ -55,15 +44,8 @@ export class SearchPageComponent implements OnInit {
     return this.medicationData.filter(option => this._searchByMeds ? option.Medication_name.toLowerCase().match(new RegExp(filterValue)): option.Symptoms.toLowerCase().match(new RegExp(filterValue)));
   }
 
-  displayFn(displayData: MedicationInterface): any {
-    // return this.myControl.value ?? "not set"
-    console.log('d')
-    console.log(this.myControl);
-    console.log('dd')
-    // return this.inputVal
+  displayFn(displayData: MedicationInterface): string {
     return displayData && displayData?.Medication_name ? displayData?.Medication_name : ''; // this
-    
-    // return this.myControl.value?.toString.name;
   }
 
   searchQueryTransform(name: string): string{

@@ -1,29 +1,23 @@
 <p> </p>
 <p></p>
 
-<!-- add buttons and make it pretty -->
-<!-- TODO:
-- ask about autocomplete (leave user input on search bar)
-- On first load/reload table should contain all the entries 
-- maybe changing the html code-->
-
 <table id="searchTable">
   <td id="searchTd">
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
-      
+
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="line-height: 1.5">
-          
+
             <!-- <p>{{option.Medication_name}}</p> -->
             <span>
-            <div>{{option.Medication_name}}</div>
-            <div style="font-size:small; color:grey;">{{option.Symptoms}}</div>
+            <div id="textMeds">{{option.Medication_name}}</div>
+            <div id="subtextSymptoms" >{{option.Symptoms}}</div>
           </span>
-          
+
           <!-- {{option.Symptoms}}  meanig here to .Symptoms -->
-        
+
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -45,7 +39,7 @@
       <th id="resultsTh">Symptoms</th>
       <th id="resultsTh">Add Medication</th>
   </tr>
-<tr *ngFor="let data of filteredOptions | async; let i=index"> 
+<tr *ngFor="let data of filteredOptions | async; let i=index">
 
  <td id="resultsTd">{{data.Medication_name}}</td>
  <td id="resultsTd">{{data.Description}}</td>
