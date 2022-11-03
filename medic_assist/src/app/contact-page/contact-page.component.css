@@ -1,0 +1,49 @@
+mat-card {
+    background-color: rgba(178, 197, 218, 0.621);
+  }
+  div {
+    padding-top: 25px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+  }
+  button:hover {
+    background-color: wheat;
+    
+  }
+
+.verticle-space{
+    margin-bottom: 15px;
+
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+  cursor: pointer;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  
+  .popup{
+    width: 70%;
+  }
+}

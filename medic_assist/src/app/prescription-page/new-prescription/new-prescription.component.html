@@ -1,0 +1,89 @@
+<h1>Create your prescription below</h1>
+
+<div>
+    <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
+        <div>
+            <div>
+                <div class="form-wrapper">
+                    <label for="doctor_name">Doctor name: </label>
+                    <br/>
+                </div>
+
+                <div>
+                    <input type="text" formControlName="doctor_name">
+                    <br/>
+                </div>
+                <br/>
+            </div>
+                
+            <div>
+                <div>
+                    <label for="provider_number">Provider number: </label>    
+                    <br/>
+                </div>
+
+                <div>
+                    <input type="number" min="0" step="0.01" formControlName="amount">
+                <br/>
+                </div>
+
+                <div *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)" class="error">
+                    <div *ngIf="provider_number.errors?.['required']">
+                        Provider number is required!
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div>
+                <div>
+                    <label for="patient_name">Patient name: </label>
+                </div>
+                <div> 
+                    <input type="text" formControlName="comment">
+                </div>
+                <br/>
+            </div>
+                    
+            <div>
+                <div>
+                    <label for="patient_dob">Patient DOB: </label>
+                </div>
+                <div> 
+                    <input type="text" formControlName="patient_dob">
+                </div>
+                <br/>
+            </div>
+
+            <div>
+                <div>
+                    <label for="comments">Comment: </label>
+                </div>
+                <div> 
+                    <input type="text" formControlName="comments">
+                </div>
+
+                <div *ngIf="comments.invalid && (comments.dirty || comments.touched)" class="error">
+                    <div *ngIf="comments.errors?.['required']">
+                        Comment is required!
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div>
+                <div>
+                    <label for="date">Date: </label>
+                </div>
+                <div>
+                    <input type="date" formControlName="date">
+                </div>
+                <div *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
+                    <div *ngIf="date.errors?.['required']"> 
+                        Date is required!
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </form>
