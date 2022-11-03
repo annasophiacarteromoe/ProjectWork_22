@@ -1,1 +1,114 @@
-<p>home-page works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+    <div class="about-section">
+        <!-- <h1 style="text-align:center">Home</h1> -->
+        <h1>Home</h1>
+        <p>Diabetes is a broad medical term used to describe the inability of the body to regulate insulin levels. Insulin is a hormone made by the pancreas that enables our body to take glucose consumed in food, and turn this into energy. Untreated diabetes can lead to heart-disease, nerve pain, vision loss and, if extreme, death. The World Health Organisation estimates 1.9million people died from diabetes in 2019 alone. This is a major health issue that can affect anyone, at any life stage. Diabetes exists in four key sub-types: type 1 diabetes, type 2 diabetes, pre-diabetes, gestational diabetes.
+        It is thereby crucial that doctors prescribe the correct medications to diabetic patients, and that patients are provided with information regarding this prescribed medication, so they understand how it can affect their diabetic treatment and lifestyle. MedicAssist fuses this into a simple platform, minimising the knowledge-gap in doctor-to-patient interactions. 
+        </p>
+    </div>
+</body>
+</html>
+
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+	.container {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  height: 200px;
+ }
+    button {
+	  padding: 10px;
+	  font-size: 16px;
+	  background: rgb(8, 190, 214);
+	}
+
+</style>
+</head>
+<body>
+   <div class="container">
+        <a routerLink="prescription-page"><button class="btn btn-success pull-right" > Create New Prescription</button></a>
+        <a routerLink="prescription-page"><button class="btn btn-success pull-right" > Abort Current Prescription</button></a>
+   </div>
+
+</body>
+</html>
