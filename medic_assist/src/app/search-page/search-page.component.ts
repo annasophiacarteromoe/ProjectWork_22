@@ -18,12 +18,12 @@ export class SearchPageComponent implements OnInit {
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
 
-  _searchByMeds: boolean = false;
+  _searchBySymptoms: boolean = true;
   content:string = "Symptoms"
   constructor(private readonly supabase: SupabaseService) {}
 
   promtSearchBy(){
-    this.content = this._searchByMeds ? "Medication" : "Symptoms";
+    this.content = this._searchBySymptoms ? "Symptoms" : "Medication";
   }
 
   ngOnInit(){
@@ -32,7 +32,7 @@ export class SearchPageComponent implements OnInit {
       this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(""),
         map(value => {
-          const name = typeof value === 'string' ? value : this._searchByMeds ? value?.Medication_name : value?.Symptoms;
+          const name = typeof value === 'string' ? value : this._searchBySymptoms ? value?.Symptoms : value?.Medication_name;
           return name!.length > 0 ? this._filter(name as string) : this.medicationData.slice();
         }),
       );
@@ -41,7 +41,7 @@ export class SearchPageComponent implements OnInit {
 
   private _filter(name: string): MedicationInterface[] {
     const filterValue = this.searchQueryTransform(name);
-    return this.medicationData.filter(option => this._searchByMeds ? option.Medication_name.toLowerCase().match(new RegExp(filterValue)): option.Symptoms.toLowerCase().match(new RegExp(filterValue)));
+    return this.medicationData.filter(option => this._searchBySymptoms ? option.Symptoms.toLowerCase().match(new RegExp(filterValue)) : option.Medication_name.toLowerCase().match(new RegExp(filterValue)));
   }
 
   displayFn(displayData: MedicationInterface): string {
@@ -56,7 +56,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   changeAutocompletion(option: MedicationInterface) {
-   return this._searchByMeds ? option.Medication_name : option.Symptoms;
+   return this._searchBySymptoms ? option.Symptoms : option.Medication_name;
   }
 
 }
