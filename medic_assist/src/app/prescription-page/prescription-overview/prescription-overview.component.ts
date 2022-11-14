@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {SearchPageComponent} from "../../search-page/search-page.component";
+import {PassArrayService} from "../../PrescriptionService/pass-array.service";
 
 @Component({
   selector: 'app-prescription-overview',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrescriptionOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private arrayService: PassArrayService) { }
+  // @ViewChild('SearchPageComponent')
 
   ngOnInit(): void {
   }
 
+  onclic() {
+    console.log(this.arrayService.showMedsArray())
+  }
 }

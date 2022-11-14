@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {Component, OnInit, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import { SupabaseService } from '../supabaseService/supabase.service';
 import { MedicationInterface } from './interfaces/medication-interface';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import {PassArrayService} from "../PrescriptionService/pass-array.service";
 import { MatInput } from '@angular/material/input';
 import * as Console from "console";
 
@@ -18,10 +19,13 @@ export class SearchPageComponent implements OnInit {
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
+  @Output() arrayEmit = new EventEmitter<string[]>()
+  array: string[] =[];
+  a = PassArrayService
 
   _searchBySymptoms: boolean = true;
   content:string = "Symptoms"
-  constructor(private readonly supabase: SupabaseService) {}
+  constructor(private readonly supabase: SupabaseService, private passArrayService: PassArrayService) {}
 
   promtSearchBy(){
     this.content = this._searchBySymptoms ? "Symptoms" : "Medication";
@@ -60,7 +64,11 @@ export class SearchPageComponent implements OnInit {
    return this._searchBySymptoms ? option.Symptoms : option.Medication_name;
   }
 
-  saveMeds(smth: MedicationInterface){
-    console.log(smth.Medication_name);
+  saveMeds(meds: MedicationInterface){
+    // this.array.push("test")
+    // this.array.push("test2")
+    // this.arrayEmit.emit(this.array);
+    this.passArrayService.addMed(meds.Medication_name);
+
   }
 }
