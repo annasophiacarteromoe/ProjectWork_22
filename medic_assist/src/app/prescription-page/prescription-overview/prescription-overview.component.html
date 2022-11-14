@@ -7,8 +7,24 @@
     <br>
 </div>
 
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Medication name</th>
+    <th id="resultsTh">Dosage</th>
+    <th id="resultsTh">Delete Medication</th>
+  </tr>
+  <tr *ngFor="let data of getArray()">
+
+    <td id="resultsTd">{{data}}</td>
+    <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput"> ml</td> <!--- align text to right--->
+    <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>
+
+
+  </tr>
+</table>
+
 <div>
-    <button type="submit" class="form-button" (click)="onclic()">Add medication</button>
+    <button type="submit" class="form-button">Add medication</button>
 </div>
 
 <div>

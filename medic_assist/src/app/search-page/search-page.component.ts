@@ -69,6 +69,7 @@ export class SearchPageComponent implements OnInit {
     // this.array.push("test2")
     // this.arrayEmit.emit(this.array);
     this.passArrayService.addMed(meds.Medication_name);
+    alert(`You've added ${meds.Medication_name} to the prescription 💊`)
 
   }
 }
