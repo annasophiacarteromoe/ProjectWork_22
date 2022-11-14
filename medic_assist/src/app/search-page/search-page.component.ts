@@ -4,6 +4,7 @@ import { MedicationInterface } from './interfaces/medication-interface';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { MatInput } from '@angular/material/input';
+import * as Console from "console";
 
 @Component({
   selector: 'app-search-page',
@@ -59,4 +60,7 @@ export class SearchPageComponent implements OnInit {
    return this._searchBySymptoms ? option.Symptoms : option.Medication_name;
   }
 
+  saveMeds(smth: MedicationInterface){
+    console.log(smth.Medication_name);
+  }
 }
