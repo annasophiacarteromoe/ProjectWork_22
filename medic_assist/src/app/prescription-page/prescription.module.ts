@@ -4,6 +4,7 @@ import { PrescriptionOverviewComponent } from './prescription-overview/prescript
 import { NewPrescriptionComponent } from './new-prescription/new-prescription.component';
 import { PrescriptionRoutingModule } from './prescription-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -11,10 +12,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewPrescriptionComponent
   ],
 
-  imports: [
-    CommonModule,
-    ReactiveFormsModule, 
-    PrescriptionRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        PrescriptionRoutingModule,
+        MatButtonModule
+    ]
 })
 export class PrescriptionModule { }
