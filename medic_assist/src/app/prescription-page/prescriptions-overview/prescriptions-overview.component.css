@@ -1,0 +1,16 @@
+#resultsTable, #resultsTh, #resultsTd {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  table-layout: fixed;
+  width: 80%;
+}
+
+#dosageInput{
+  width: 20%;
+  text-align: right;
+}

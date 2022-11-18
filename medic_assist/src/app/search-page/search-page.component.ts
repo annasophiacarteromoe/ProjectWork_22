@@ -19,7 +19,6 @@ export class SearchPageComponent implements OnInit {
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
-  @Output() arrayEmit = new EventEmitter<string[]>()
   array: string[] =[];
   a = PassArrayService
 

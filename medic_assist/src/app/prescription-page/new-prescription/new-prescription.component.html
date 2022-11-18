@@ -1,11 +1,11 @@
 <h1>Create your prescription below</h1>
-
+<!--error handling does not work-->
 <div>
     <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
         <div>
             <div>
                 <div class="form-wrapper">
-                    <label for="doctor_name">Doctor name: </label>
+                    <label>Doctor name: </label>
                     <br/>
                 </div>
 
@@ -15,15 +15,15 @@
                 </div>
                 <br/>
             </div>
-                
+
             <div>
                 <div>
-                    <label for="provider_number">Provider number: </label>    
+                    <label>Provider number: </label>
                     <br/>
                 </div>
 
                 <div>
-                    <input type="number" min="0" step="0.01" formControlName="amount">
+                    <input type="number" min="0" step="1" formControlName="provider_number">
                 <br/>
                 </div>
 
@@ -37,19 +37,19 @@
 
             <div>
                 <div>
-                    <label for="patient_name">Patient name: </label>
+                    <label>Patient name: </label>
                 </div>
-                <div> 
-                    <input type="text" formControlName="comment">
+                <div>
+                    <input type="text" formControlName="patient_name">
                 </div>
                 <br/>
             </div>
-                    
+
             <div>
                 <div>
-                    <label for="patient_dob">Patient DOB: </label>
+                    <label>Patient DOB: </label>
                 </div>
-                <div> 
+                <div>
                     <input type="text" formControlName="patient_dob">
                 </div>
                 <br/>
@@ -57,9 +57,9 @@
 
             <div>
                 <div>
-                    <label for="comments">Comment: </label>
+                    <label>Comment: </label>
                 </div>
-                <div> 
+                <div>
                     <input type="text" formControlName="comments">
                 </div>
 
@@ -73,13 +73,13 @@
 
             <div>
                 <div>
-                    <label for="date">Date: </label>
+                    <label>Date: </label>
                 </div>
                 <div>
                     <input type="date" formControlName="date">
                 </div>
                 <div *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
-                    <div *ngIf="date.errors?.['required']"> 
+                    <div *ngIf="date.errors?.['required']">
                         Date is required!
                     </div>
                 </div>
@@ -87,3 +87,5 @@
             </div>
         </div>
     </form>
+</div>
+<button routerLink="show" title="show" (click)="onClick()">Create</button> <br><br>

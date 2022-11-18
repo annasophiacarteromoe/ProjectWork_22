@@ -1,0 +1,40 @@
+
+<p></p><p></p>
+
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Provider number</th>
+    <th id="resultsTh">Date</th>
+    <th id="resultsTh">Patient name</th>
+    <th id="resultsTh">Patient DOB</th>
+    <th id="resultsTh">Doctor name</th>
+    <th id="resultsTh">Comment</th>
+  </tr>
+  <tr>
+    <td id="resultsTd">{{getForm().provider_number}}</td>
+    <td id="resultsTd">{{getForm().date}}</td>
+    <td id="resultsTd">{{getForm().patient_name}}</td>
+    <td id="resultsTd">{{getForm().patient_dob}}</td>
+    <td id="resultsTd">{{getForm().doctor_name}}</td>
+    <td id="resultsTd">{{getForm().comments}}</td>
+
+  </tr>
+</table>
+
+
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Medication name</th>
+    <th id="resultsTh">Dosage</th>
+    <th id="resultsTh">Delete Medication</th>
+  </tr>
+  <tr *ngFor="let data of getMeds()">
+
+    <td id="resultsTd">{{data}}</td>
+    <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput"> ml</td>
+    <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>
+  </tr>
+</table>
+
+<button (click)="goToSearchPage()"  title="add medictaions">Add medications</button> <br><br>
+<button (click)="savePrescription()"  title="save medictaions">Save prescripton</button> <br><br>

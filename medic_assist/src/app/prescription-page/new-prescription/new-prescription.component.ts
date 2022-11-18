@@ -1,9 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
-import { catchError, Observable, throwError } from 'rxjs';
-import { Prescription } from '../../prescription.type';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Router, RouterModule} from '@angular/router';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
+import {catchError, Observable, throwError} from 'rxjs';
+import {Prescription} from '../../prescription.type';
+import {FormArrayService} from "../../PrescriptionService/form-array.service";
 
 @Component({
   selector: 'app-new-prescription',
@@ -11,25 +20,27 @@ import { Prescription } from '../../prescription.type';
   styleUrls: ['./new-prescription.component.css']
 })
 export class NewPrescriptionComponent implements OnInit {
- 
-  protected newPrescriptionForm : FormGroup = this.fb.group({
+
+  newPrescriptionForm: FormGroup = this.fb.group({
     doctor_name: ['', Validators.required],
     provider_number: ['', [Validators.pattern("([0-9]*[,.])?[0-9]+"), Validators.required]],
     patient_name: ['', [Validators.required]],
     patient_dob: ['', [Validators.required]],
     comments: [''],
-    date: ['' , Validators.required]
+    date: ['', Validators.required]
   });
+  p: Prescription | undefined;
 
   constructor(private router: Router,
-              public fb: FormBuilder) { 
-              }
+              public fb: FormBuilder,
+              private fromArray: FormArrayService) {
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    var p : Prescription = {
+    this.p = {
       doctor_name: this.doctor_name.value,
       provider_number: this.provider_number.value,
       patient_name: this.patient_name.value,
@@ -63,6 +74,12 @@ export class NewPrescriptionComponent implements OnInit {
 
   get date(): FormControl {
     return this.newPrescriptionForm.get("date") as FormControl;
+  }
+
+  onClick() {
+    // console.log(this.doctor_name.value)
+    this.fromArray.addFrom(this.comments.value, this.date.value, this.doctor_name.value, this.patient_dob.value, this.patient_name.value, this.provider_number.value)
+  console.log(this.fromArray.returnArray())
   }
 
 }
