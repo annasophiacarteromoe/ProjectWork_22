@@ -4,5 +4,5 @@ export interface Prescription {
     patient_name: string;
     patient_dob: string;
     comments: string;
-    date: number;
+    date: string;
   }

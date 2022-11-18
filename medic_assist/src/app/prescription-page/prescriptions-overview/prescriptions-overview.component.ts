@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PassArrayService} from "../../PrescriptionService/pass-array.service";
 import {FormArrayService} from "../../PrescriptionService/form-array.service";
 import {Router} from "@angular/router";
+import {SupabaseService} from "../../supabaseService/supabase.service";
 
 @Component({
   selector: 'app-prescriptions-overview',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class PrescriptionsOverviewComponent implements OnInit {
 
-  constructor(private medsArray: PassArrayService, private formArray: FormArrayService, private router: Router) { }
+  constructor(private medsArray: PassArrayService, private formArray: FormArrayService, private router: Router, private supabase: SupabaseService) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +36,6 @@ export class PrescriptionsOverviewComponent implements OnInit {
 
 
   savePrescription() {
-    
+    this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnArray())
   }
 }

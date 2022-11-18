@@ -7,7 +7,8 @@ import {TmplAstBoundAttribute} from "@angular/compiler";
 })
 export class FormArrayService {
   formArray: Prescription = {
-    comments: "", date: 0, doctor_name: "", patient_dob: "", patient_name: "", provider_number: 0
+    comments: "", date: "", doctor_name: "", patient_dob: "", patient_name: "", provider_number: 0
+
   };
 
   constructor() {

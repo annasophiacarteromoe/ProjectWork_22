@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core'
+import {Injectable} from '@angular/core'
 import {
   AuthChangeEvent,
   createClient,
   Session,
   SupabaseClient,
 } from '@supabase/supabase-js'
-import { environment } from 'src/environments/environment'
+import {environment} from 'src/environments/environment'
+import {HttpResponseBase} from "@angular/common/http";
+import {Prescription} from "../prescription.type";
 
 export interface Profile {
   username: string
@@ -27,11 +29,23 @@ export class SupabaseService {
   }
 
 
-  get allMedication(){
-    return this.supabase.from('Medication2').select()
-  
-  }
-  
+  get allMedication() {
+    return this.supabase.from('Medication').select()
 
-  
+  }
+
+  async savePrescription(form: Prescription, meds: string[]) {
+    await this.supabase.from('Prescriptions').insert({
+      Provider_number: form.provider_number,
+      Patient_name: form.patient_name,
+      Patient_DOB: form.patient_dob,
+      Doc_name: form.doctor_name,
+      Comment: form.comments,
+      Medications: meds,
+      Date: form.date
+    })
+    console.log(typeof form.date)
+  }
+
+
 }
