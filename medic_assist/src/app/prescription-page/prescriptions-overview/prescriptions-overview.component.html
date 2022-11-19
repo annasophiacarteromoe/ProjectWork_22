@@ -31,10 +31,10 @@
   <tr *ngFor="let data of getMeds()">
 
     <td id="resultsTd">{{data}}</td>
-    <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput"> ml</td>
+    <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput" value="10"> ml</td>
     <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>
   </tr>
 </table>
 
-<button (click)="goToSearchPage()"  title="add medictaions">Add medications</button> <br><br>
-<button (click)="savePrescription()"  title="save medictaions">Save prescripton</button> <br><br>
+<button mat-raised-button (click)="goToSearchPage()"  title="add medictaions">Add medications</button> <br><br>
+<button mat-raised-button (click)="savePrescription()"  title="save medictaions">Save prescripton</button> <br><br>
