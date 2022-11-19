@@ -41,12 +41,12 @@ export class NewPrescriptionComponent implements OnInit {
 
   onSubmit() {
     this.p = {
-      doctor_name: this.doctor_name.value,
-      provider_number: this.provider_number.value,
-      patient_name: this.patient_name.value,
-      patient_dob: this.patient_dob.value,
-      comments: this.comments.value,
-      date: this.date.value
+      Doctor_name: this.doctor_name.value,
+      Provider_number: this.provider_number.value,
+      Patient_name: this.patient_name.value,
+      Patient_DOB: this.patient_dob.value,
+      Comment: this.comments.value,
+      Date: this.date.value
     };
 
     console.log(this.newPrescriptionForm.value)

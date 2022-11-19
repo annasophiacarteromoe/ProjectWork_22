@@ -7,7 +7,8 @@ import {
 } from '@supabase/supabase-js'
 import {environment} from 'src/environments/environment'
 import {HttpResponseBase} from "@angular/common/http";
-import {Prescription} from "../prescription.type";
+import {Prescription, SavedPrescriptions} from "../prescription.type";
+import {Observable} from "rxjs";
 
 export interface Profile {
   username: string
@@ -36,16 +37,24 @@ export class SupabaseService {
 
   async savePrescription(form: Prescription, meds: string[]) {
     await this.supabase.from('Prescriptions').insert({
-      Provider_number: form.provider_number,
-      Patient_name: form.patient_name,
-      Patient_DOB: form.patient_dob,
-      Doc_name: form.doctor_name,
-      Comment: form.comments,
+      Provider_number: form.Provider_number,
+      Patient_name: form.Patient_name,
+      Patient_DOB: form.Patient_DOB,
+      Doctor_name: form.Doctor_name,
+      Comment: form.Comment,
       Medications: meds,
-      Date: form.date
+      Date: form.Date
     })
-    console.log(typeof form.date)
   }
+
+  get showSaved(){
+    return this.supabase.from('Prescriptions').select()
+  }
+
+  showPrescription(prescriptionNumber: number) {
+    return this.supabase.from('Prescriptions').select().eq('Prescription_number', prescriptionNumber)
+  }
+
 
 
 }

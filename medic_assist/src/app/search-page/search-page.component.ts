@@ -19,8 +19,6 @@ export class SearchPageComponent implements OnInit {
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
-  array: string[] =[];
-  a = PassArrayService
 
   _searchBySymptoms: boolean = true;
   content:string = "Symptoms"
@@ -64,9 +62,6 @@ export class SearchPageComponent implements OnInit {
   }
 
   saveMeds(meds: MedicationInterface){
-    // this.array.push("test")
-    // this.array.push("test2")
-    // this.arrayEmit.emit(this.array);
     this.passArrayService.addMed(meds.Medication_name);
     alert(`You've added ${meds.Medication_name} to the prescription 💊`)
 

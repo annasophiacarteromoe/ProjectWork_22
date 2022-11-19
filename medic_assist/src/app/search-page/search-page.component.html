@@ -39,7 +39,7 @@
       <th id="resultsTh">Symptoms</th>
       <th id="resultsTh">Add Medication</th>
   </tr>
-<tr *ngFor="let data of filteredOptions | async; let i=index">
+<tr *ngFor="let data of medicationData; let i=index">
 
  <td id="resultsTd">{{data.Medication_name}}</td>
  <td id="resultsTd">{{data.Description}}</td>

@@ -7,8 +7,7 @@ import {TmplAstBoundAttribute} from "@angular/compiler";
 })
 export class FormArrayService {
   formArray: Prescription = {
-    comments: "", date: "", doctor_name: "", patient_dob: "", patient_name: "", provider_number: 0
-
+    Comment: "", Date: "", Doctor_name: "", Patient_DOB: "", Patient_name: "", Provider_number: 0
   };
 
   constructor() {
@@ -21,12 +20,12 @@ export class FormArrayService {
 
   addFrom(comment: string, dates: any, doc_name: string, pat_dob: string, pat_name: string, prov_num: number): void {
     this.formArray = {
-      comments: comment,
-      date: dates,
-      doctor_name: doc_name,
-      patient_dob: pat_dob,
-      patient_name: pat_name,
-      provider_number: prov_num
+      Comment: comment,
+      Date: dates,
+      Doctor_name: doc_name,
+      Patient_DOB: pat_dob,
+      Patient_name: pat_name,
+      Provider_number: prov_num
 
     }
   }

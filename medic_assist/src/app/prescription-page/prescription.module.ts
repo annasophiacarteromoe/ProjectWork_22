@@ -6,12 +6,14 @@ import { PrescriptionRoutingModule } from './prescription-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from "@angular/material/button";
 import { PrescriptionsOverviewComponent } from './prescriptions-overview/prescriptions-overview.component';
+import { SavedPrescriptionsComponent } from './saved-prescriptions/saved-prescriptions.component';
 
 @NgModule({
   declarations: [
     PrescriptionPageMainComponent,
     NewPrescriptionComponent,
-    PrescriptionsOverviewComponent
+    PrescriptionsOverviewComponent,
+    SavedPrescriptionsComponent
   ],
 
     imports: [

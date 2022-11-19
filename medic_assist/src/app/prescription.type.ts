@@ -1,8 +1,15 @@
 export interface Prescription {
-    doctor_name: string;
-    provider_number: number;
-    patient_name: string;
-    patient_dob: string;
-    comments: string;
-    date: string;
+    Doctor_name: string;
+    Provider_number: number;
+    Patient_name: string;
+    Patient_DOB: string;
+    Comment: string;
+    Date: string;
+  }
+
+  export interface SavedPrescriptions{
+    Prescription_number:number;
+    Patient_name: string;
+    Date: string;
+
   }

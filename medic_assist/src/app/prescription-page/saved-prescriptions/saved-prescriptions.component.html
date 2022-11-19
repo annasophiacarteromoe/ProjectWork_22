@@ -1,0 +1,18 @@
+<p></p>
+
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Prescription number</th>
+    <th id="resultsTh">Date</th>
+    <th id="resultsTh">Patient name</th>
+  </tr>
+  <tr *ngFor="let data of prescriptionArray; let i=index">
+
+    <td id="resultsTd">{{data.Prescription_number}}</td>
+    <td id="resultsTd">{{data.Date}}</td>
+    <td id="resultsTd">{{data.Patient_name}}</td>
+
+
+  </tr>
+</table>
+<button (click)="some()">do it</button>
