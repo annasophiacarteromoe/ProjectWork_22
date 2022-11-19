@@ -7,13 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from "@angular/material/button";
 import { PrescriptionsOverviewComponent } from './prescriptions-overview/prescriptions-overview.component';
 import { SavedPrescriptionsComponent } from './saved-prescriptions/saved-prescriptions.component';
+import { PrescriptionDetailsComponent } from './prescription-details/prescription-details.component';
 
 @NgModule({
   declarations: [
     PrescriptionPageMainComponent,
     NewPrescriptionComponent,
     PrescriptionsOverviewComponent,
-    SavedPrescriptionsComponent
+    SavedPrescriptionsComponent,
+    PrescriptionDetailsComponent
   ],
 
     imports: [

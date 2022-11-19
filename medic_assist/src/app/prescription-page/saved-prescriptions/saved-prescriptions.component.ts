@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SupabaseService} from "../../supabaseService/supabase.service";
 import {PrescriptionNumberService} from "../../PrescriptionService/prescription-number.service";
-import {Prescription, SavedPrescriptions} from "../../prescription.type";
-import {Observable} from "rxjs";
+import {SavedPrescriptions} from "../../prescription.type";
 
 @Component({
   selector: 'app-saved-prescriptions',
@@ -11,18 +10,20 @@ import {Observable} from "rxjs";
 })
 export class SavedPrescriptionsComponent implements OnInit {
 
-  constructor(private readonly supabase: SupabaseService, private prescriptionNumer:PrescriptionNumberService) { }
+  constructor(private readonly supabase: SupabaseService, private prescriptionNubmer:PrescriptionNumberService) { }
 
   prescriptionArray:SavedPrescriptions[]=[];
   ngOnInit(){
     this.supabase.showSaved.then(data =>{
+      // @ts-ignore
       this.prescriptionArray = data.data!
     })
 
   }
 
-  some() {
-    // this.prescriptionArray!.forEach(value => {value.slice().forEach(value1 => {value1.})})
-    console.log(this.prescriptionArray)
+  showDetails(prescritpionNum: number) {
+    this.prescriptionNubmer.setNumber(prescritpionNum)
+
+
   }
 }

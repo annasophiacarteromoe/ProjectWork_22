@@ -16,7 +16,6 @@ export class PrescriptionsOverviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   getMeds() {
     return this.medsArray.returnArray()
   }

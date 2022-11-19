@@ -48,10 +48,10 @@ export class SupabaseService {
   }
 
   get showSaved(){
-    return this.supabase.from('Prescriptions').select()
+    return this.supabase.from('Prescriptions').select('Prescription_number, Date, Patient_name',)
   }
 
-  showPrescription(prescriptionNumber: number) {
+  showPrescriptionDetails(prescriptionNumber:number) {
     return this.supabase.from('Prescriptions').select().eq('Prescription_number', prescriptionNumber)
   }
 
