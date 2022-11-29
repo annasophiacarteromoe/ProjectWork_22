@@ -4,8 +4,8 @@ import { Router, RouterModule } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Prescription } from '../../prescription.type';
-
-declare var jsPDF: any;
+import { jsPDF } from 'jspdf'
+// declare var jsPDF: any;
 
 @Component({
   selector: 'app-new-prescription',
@@ -77,12 +77,19 @@ export class NewPrescriptionComponent implements OnInit {
       '#editor':function(_element: any){  
         return true;  
       }  
-    };  
+    };
+    
+    doc.html(content.innerHTML, {callback: () => {
+      doc.output('dataurlnewwindow');
+    }});
+
+    /*
     doc.fromHTML(content.innerHTML,15,15,{  
   
       'width':190,  
       'elementHandlers':_elementHandlers  
-    });  
+    });
+    */  
   
     doc.save('test.pdf');  
   }  
