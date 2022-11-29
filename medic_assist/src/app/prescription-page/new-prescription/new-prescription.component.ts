@@ -77,11 +77,18 @@ export class NewPrescriptionComponent implements OnInit {
         return true;  
       }  
     };  
+
+    doc.html(content, {callback: () => {
+      doc.output('dataurlnewwindow');
+    }, x: 30, y:30, html2canvas: { scale: 0.8 }});
+
+    /*
     doc.fromHTML(content.innerHTML,15,15,{  
   
       'width':190,  
       'elementHandlers':_elementHandlers  
     });  
+    */
   
     doc.save('test.pdf');  
   }  
