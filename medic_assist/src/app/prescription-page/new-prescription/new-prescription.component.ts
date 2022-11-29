@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+
 import {CommonModule} from '@angular/common';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {
   AbstractControl,
@@ -13,6 +14,11 @@ import {
 import {catchError, Observable, throwError} from 'rxjs';
 import {Prescription} from '../../prescription.type';
 import {FormArrayService} from "../../PrescriptionService/form-array.service";
+import jsPDF from 'jspdf';
+//import "jspdf";
+
+//declare var jsPDF2: any;
+
 
 @Component({
   selector: 'app-new-prescription',
@@ -76,10 +82,28 @@ export class NewPrescriptionComponent implements OnInit {
     return this.newPrescriptionForm.get("date") as FormControl;
   }
 
+
   onClick() {
     // console.log(this.doctor_name.value)
     this.fromArray.addFrom(this.comments.value, this.date.value, this.doctor_name.value, this.patient_dob.value, this.patient_name.value, this.provider_number.value)
   console.log(this.fromArray.returnArray())
   }
 
+}
+
+  @ViewChild('content') content: ElementRef;
+  public SavePDF(): void {
+    let content=this.content.nativeElement;
+    let doc = new jsPDF();
+    let _elementHandlers =
+    {
+      '#editor':function(_element: any){
+        return true;
+      }
+    };
+    //doc.html(content.innerHTML,15,15,{
+   // });
+
+  //  doc.save('test.pdf');
+  }
 }

@@ -31,6 +31,10 @@
                     formControlName="name"
                     />
                 </div>
+                <span *ngIf="ReportForm.get('name')?.touched &&
+                ReportForm.get('name')?.invalid">
+                Name must not be empty.
+                </span>
 
                 <div class="form-group">
                     <label for="Email"> *Email </label>
@@ -40,6 +44,12 @@
                     formControlName="email"
                     />
                 </div>
+
+                <span *ngIf="ReportForm.get('email')?.touched &&
+                ReportForm.get('email')?.invalid">
+                Email is not valid.
+                </span>
+
 
                 <div class="form-group">
                     <label for="feedback"> Feedback </label>
@@ -51,17 +61,6 @@
                 </div>
 
                 <button class="btn btn-primary" [disabled]="!ReportForm.valid" type="submit"> Submit </button>
-                <br>
-                <span *ngIf="ReportForm.get('name')?.touched &&
-                ReportForm.get('name')?.invalid; else EmailChecker">
-                Name must not be empty.
-                </span>
-                <ng-template #EmailChecker>
-                    <span *ngIf="ReportForm.get('email')?.touched &&
-                    ReportForm.get('email')?.invalid">
-                    Email is not valid.
-                    </span>
-                </ng-template>
 
             </form>
         </div>
@@ -69,32 +68,74 @@
         <h2>Previous Question</h2>
         <hr>
 
-        <div fxLayout="row" fxLayoutAlign="center">
-            
-            <mat-card class="verticle-space asd cardPardding" *ngFor="let q of QuestionAnswer; let i=index">
-                <mat-card-title>
-                    Name: {{ q.name }}
-                    Email: {{ q.email }}
-                </mat-card-title>
-                <mat-card-subtitle>
-                    Feedback: {{ q.feedback }}
-                </mat-card-subtitle>
-        
-                <mat-card-content>
-                    Answer: {{ q.answer }}
-                </mat-card-content>
-        
-                <mat-card-actions>
-                    <button
-                      mat-raised-button
-                      color="primary"
-                      (click)="OnRemoveQuestion(q.id, i)"
-                    >
-                      Confirm
-                    </button>
-                </mat-card-actions>
 
-            </mat-card>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <mat-form-field class="example-full-width">
+                <span matPrefix> </span>
+                <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+                <button matSuffix mat-button (click)="filter()">search</button>
+                <button matSuffix mat-button (click)="reset()">reset</button>
+            </mat-form-field>
+
+            Searched by:  
+            <select name="demo" [(ngModel)]="selections">
+                <option value="name">Name</option>
+                <option value="feedback">Feedback</option>
+            </select>
+
+            
+            <span *ngIf="!Filtered">
+                <mat-card class="verticle-space asd cardPardding" *ngFor="let q of QuestionAnswer; let i=index">
+                    <mat-card-title>
+                        Name: {{ q.name }}
+                        Email: {{ q.email }}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        Feedback: {{ q.feedback }}
+                    </mat-card-subtitle>
+            
+                    <mat-card-content>
+                        Answer: {{ q.answer }}
+                    </mat-card-content>
+            
+                    <mat-card-actions>
+                        <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="OnRemoveQuestion(q.id, i)"
+                        >
+                        Delete
+                        </button>
+                    </mat-card-actions>
+
+                </mat-card>
+            </span>
+            <span *ngIf="Filtered">
+                <mat-card class="verticle-space asd cardPardding" *ngFor="let q of FilteredQuestionAnswer; let i=index">
+                    <mat-card-title>
+                        Name: {{ q.name }}
+                        Email: {{ q.email }}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        Feedback: {{ q.feedback }}
+                    </mat-card-subtitle>
+            
+                    <mat-card-content>
+                        Answer: {{ q.answer }}
+                    </mat-card-content>
+            
+                    <mat-card-actions>
+                        <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="OnRemoveQuestion(q.id, i)"
+                        >
+                        Delete
+                        </button>
+                    </mat-card-actions>
+
+                </mat-card>
+            </span>
             
         </div>
 
