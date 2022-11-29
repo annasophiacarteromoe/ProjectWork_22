@@ -76,13 +76,13 @@
                 <button matSuffix mat-button (click)="filter()">search</button>
                 <button matSuffix mat-button (click)="reset()">reset</button>
             </mat-form-field>
-            {{search}}
+
             Searched by:  
             <select name="demo" [(ngModel)]="selections">
                 <option value="name">Name</option>
                 <option value="feedback">Feedback</option>
             </select>
-            {{search}}
+
             
             <span *ngIf="!Filtered">
                 <mat-card class="verticle-space asd cardPardding" *ngFor="let q of QuestionAnswer; let i=index">
