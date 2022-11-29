@@ -4,8 +4,8 @@ import { Router, RouterModule } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Prescription } from '../../prescription.type';
-import { jsPDF } from 'jspdf'
-// declare var jsPDF: any;
+
+declare var jsPDF: any;
 
 @Component({
   selector: 'app-new-prescription',
@@ -67,8 +67,7 @@ export class NewPrescriptionComponent implements OnInit {
     return this.newPrescriptionForm.get("date") as FormControl;
   }
 
-  @ViewChild('content')
-  content!: ElementRef;
+  @ViewChild('content') content: ElementRef;
   public SavePDF(): void {  
     let content=this.content.nativeElement;  
     let doc = new jsPDF('l', 'pt', 'a4');  
@@ -77,20 +76,12 @@ export class NewPrescriptionComponent implements OnInit {
       '#editor':function(_element: any){  
         return true;  
       }  
-    };
-    // doc.setDisplayMode(2);
-
-    doc.html(content, {callback: () => {
-      doc.output('dataurlnewwindow');
-    }, x: 30, y:30, html2canvas: { scale: 0.8 }});
-
-    /*
+    };  
     doc.fromHTML(content.innerHTML,15,15,{  
   
       'width':190,  
       'elementHandlers':_elementHandlers  
-    });
-    */  
+    });  
   
     doc.save('test.pdf');  
   }  
