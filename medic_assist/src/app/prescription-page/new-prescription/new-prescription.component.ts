@@ -4,8 +4,9 @@ import { Router, RouterModule } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Prescription } from '../../prescription.type';
+import { jsPDF } from 'jspdf';
 
-declare var jsPDF: any;
+// declare var jsPDF: any;
 
 @Component({
   selector: 'app-new-prescription',
