@@ -15,6 +15,8 @@ import {catchError, Observable, throwError} from 'rxjs';
 import {Prescription} from '../../prescription.type';
 import {FormArrayService} from "../../PrescriptionService/form-array.service";
 import jsPDF from 'jspdf';
+import {PassArrayService} from "../../PrescriptionService/pass-array.service";
+import {SupabaseService} from "../../supabaseService/supabase.service";
 //import "jspdf";
 
 //declare var jsPDF2: any;
@@ -39,7 +41,10 @@ export class NewPrescriptionComponent implements OnInit {
 
   constructor(private router: Router,
               public fb: FormBuilder,
-              private fromArray: FormArrayService) {
+              private formArray: FormArrayService,
+              private medsArray: PassArrayService,
+              private supabase: SupabaseService,
+              ){
   }
 
   ngOnInit(): void {
@@ -85,8 +90,30 @@ export class NewPrescriptionComponent implements OnInit {
 
   onClick() {
     // console.log(this.doctor_name.value)
-    this.fromArray.addFrom(this.comments.value, this.date.value, this.doctor_name.value, this.patient_dob.value, this.patient_name.value, this.provider_number.value)
-  console.log(this.fromArray.returnArray())
+    this.formArray.addFrom(this.comments.value, this.date.value, this.doctor_name.value, this.patient_dob.value, this.patient_name.value, this.provider_number.value)
+  console.log(this.formArray.returnArray())
+  }
+
+  getMeds() {
+    return this.medsArray.returnArray()
+  }
+
+  getForm(){
+    return this.formArray.returnArray()
+  }
+
+  savePrescription() {
+    this.onClick()
+    this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnArray())
+  }
+
+  goToSearchPage() {
+    this.router.navigate(['/search-page'])
+  }
+
+  onDelete(med: string) {
+    // this.arrayService.deleteMed(med)
+
   }
 
 

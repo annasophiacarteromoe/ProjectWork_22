@@ -3,73 +3,73 @@
 <!--error handling does not work-->
 <div>
     <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
-        <div>
-            <div>
-                <div class="form-wrapper">
-                    <label>Doctor name: </label>
-                    <br/>
-                </div>
+<!--        <div>-->
+<!--            <div>-->
+<!--                <div class="form-wrapper">-->
+<!--                    <label>Doctor name: </label>-->
+<!--                    <br/>-->
+<!--                </div>-->
 
-                <div>
-                    <input type="text" formControlName="doctor_name">
-                    <br/>
-                </div>
-                <br/>
-            </div>
+<!--                <div>-->
+<!--                    <input type="text" formControlName="doctor_name">-->
+<!--                    <br/>-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--            </div>-->
 
-            <div>
-                <div>
-                    <label>Provider number: </label>
-                    <br/>
-                </div>
+<!--            <div>-->
+<!--                <div>-->
+<!--                    <label>Provider number: </label>-->
+<!--                    <br/>-->
+<!--                </div>-->
 
-                <div>
-                    <input type="number" min="0" step="1" formControlName="provider_number">
-                <br/>
-                </div>
+<!--                <div>-->
+<!--                    <input type="number" min="0" step="1" formControlName="provider_number">-->
+<!--                <br/>-->
+<!--                </div>-->
 
-                <div *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)" class="error">
-                    <div *ngIf="provider_number.errors?.['required']">
-                        Provider number is required!
-                    </div>
-                </div>
-                <br/>
-            </div>
+<!--                <div *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)" class="error">-->
+<!--                    <div *ngIf="provider_number.errors?.['required']">-->
+<!--                        Provider number is required!-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--            </div>-->
 
-            <div>
-                <div>
-                    <label>Patient name: </label>
-                </div>
-                <div>
-                    <input type="text" formControlName="patient_name">
-                </div>
-                <br/>
-            </div>
+<!--            <div>-->
+<!--                <div>-->
+<!--                    <label>Patient name: </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <input type="text" formControlName="patient_name">-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--            </div>-->
 
-            <div>
-                <div>
-                    <label>Patient DOB: </label>
-                </div>
-                <div>
-                    <input type="text" formControlName="patient_dob">
-                </div>
-                <br/>
-            </div>
+<!--            <div>-->
+<!--                <div>-->
+<!--                    <label>Patient DOB: </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <input type="text" formControlName="patient_dob">-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--            </div>-->
 
-            <div>
-                <div>
-                    <label>Comment: </label>
-                </div>
-                <div>
-                    <input type="text" formControlName="comments">
-                </div>
+<!--            <div>-->
+<!--                <div>-->
+<!--                    <label>Comment: </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <input type="text" formControlName="comments">-->
+<!--                </div>-->
 
-                <div *ngIf="comments.invalid && (comments.dirty || comments.touched)" class="error">
-                    <div *ngIf="comments.errors?.['required']">
-                        Comment is required!
-                    </div>
-                </div>
-                <br/>
+<!--                <div *ngIf="comments.invalid && (comments.dirty || comments.touched)" class="error">-->
+<!--                    <div *ngIf="comments.errors?.['required']">-->
+<!--                        Comment is required!-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <br/>-->
 
 <br/><br/>
 
@@ -97,7 +97,7 @@
 
                     <div>
                         <label for="provider_number">Provider number: </label>
-                        <input type="number" min="0" step="0.01" formControlName="provider_number">
+                        <input type="number" min="0" step="1" formControlName="provider_number">
                         <div *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)" class="error">
                             <div *ngIf="provider_number.errors?.['required']">
                                 Provider number is required!
@@ -161,34 +161,76 @@
                                 </div>
                             </td>
                         </tr>
+<!--                    <tr><button (click)="onClick()">Create</button> <br><br></tr>-->
                     </tbody>
                 </table>
             </div>
+<!--          <div>-->
+<!--            <h4>Prescription</h4>-->
+
+<!--            <table id="resultsTable">-->
+<!--              <tr>-->
+<!--                <th id="resultsTh">Provider number</th>-->
+<!--                <th id="resultsTh">Date</th>-->
+<!--                <th id="resultsTh">Patient name</th>-->
+<!--                <th id="resultsTh">Patient DOB</th>-->
+<!--                <th id="resultsTh">Doctor name</th>-->
+<!--                <th id="resultsTh">Comment</th>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td id="resultsTd">{{getForm().Provider_number}}</td>-->
+<!--                <td id="resultsTd">{{getForm().Date}}</td>-->
+<!--                <td id="resultsTd">{{getForm().Patient_name}}</td>-->
+<!--                <td id="resultsTd">{{getForm().Patient_DOB}}</td>-->
+<!--                <td id="resultsTd">{{getForm().Doctor_name}}</td>-->
+<!--                <td id="resultsTd">{{getForm().Comment}}</td>-->
+
+<!--              </tr>-->
+<!--            </table>-->
+<!--          </div>-->
             <div id="Medication">
                 <h4>Medication</h4>
-                <button routerLink="search" class="big-button" title="new prescription">Add medication</button><br><br>
+
+              <table id="resultsTable">
+                <tr>
+                  <th id="resultsTh">Medication name</th>
+                  <th id="resultsTh">Dosage</th>
+                  <th id="resultsTh">Delete Medication</th>
+                </tr>
+                <tr *ngFor="let data of getMeds()">
+
+                  <td id="resultsTd">{{data}}</td>
+                  <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput" value="10"> ml</td>
+                  <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>
+                </tr>
+              </table>
+<!--                <button routerLink="search" class="big-button" title="new prescription">Add medication</button><br><br>-->
 
             </div>
             <div>
 
-                <div>
-                    <label>Date: </label>
-                </div>
-                <div>
-                    <input type="date" formControlName="date">
-                </div>
-                <div *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
-                    <div *ngIf="date.errors?.['required']">
-                        Date is required!
-                    </div>
-                </div>
+<!--                <div>-->
+<!--                    <label>Date: </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <input type="date" formControlName="date">-->
+<!--                </div>-->
+<!--                <div *ngIf="date.invalid && (date.dirty || date.touched)" class="error">-->
+<!--                    <div *ngIf="date.errors?.['required']">-->
+<!--                        Date is required!-->
+<!--                    </div>-->
+<!--                </div>-->
                 <br/>
 
                 <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
+              <button mat-raised-button (click)="savePrescription()"  title="save medictaions">Save prescripton</button>
+              <button mat-raised-button (click)="goToSearchPage()"  title="add medictaions">Add medications</button> <br><br>
+              <br><br>
+
 
             </div>
         </div>
     </form>
 </div>
 
-<button routerLink="show" title="show" (click)="onClick()">Create</button> <br><br>
+
