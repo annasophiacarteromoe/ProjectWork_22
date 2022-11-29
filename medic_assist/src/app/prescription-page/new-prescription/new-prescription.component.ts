@@ -89,7 +89,7 @@ export class NewPrescriptionComponent implements OnInit {
   console.log(this.fromArray.returnArray())
   }
 
-}
+
 
   @ViewChild('content') content: ElementRef;
   public SavePDF(): void {
