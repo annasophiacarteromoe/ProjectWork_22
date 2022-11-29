@@ -71,17 +71,18 @@ export class NewPrescriptionComponent implements OnInit {
   content!: ElementRef;
   public SavePDF(): void {  
     let content=this.content.nativeElement;  
-    let doc = new jsPDF();  
+    let doc = new jsPDF('l', 'pt', 'a4');  
     let _elementHandlers =  
     {  
       '#editor':function(_element: any){  
         return true;  
       }  
     };
-    
-    doc.html(content.innerHTML, {callback: () => {
+    // doc.setDisplayMode(2);
+
+    doc.html(content, {callback: () => {
       doc.output('dataurlnewwindow');
-    }});
+    }, x: 30, y:30, html2canvas: { scale: 0.8 }});
 
     /*
     doc.fromHTML(content.innerHTML,15,15,{  
