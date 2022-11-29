@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table'
 import {SearchPageComponent} from "./search-page/search-page.component";
 import {ContactPageComponent} from "./contact-page/contact-page.component";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -33,6 +34,7 @@ import {ContactPageComponent} from "./contact-page/contact-page.component";
     NavigationBarComponent,
     SearchPageComponent,
     ContactPageComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
