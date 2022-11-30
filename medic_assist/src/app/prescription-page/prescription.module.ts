@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { PrescriptionsOverviewComponent } from './prescriptions-overview/prescriptions-overview.component';
 import { SavedPrescriptionsComponent } from './saved-prescriptions/saved-prescriptions.component';
 import { PrescriptionDetailsComponent } from './prescription-details/prescription-details.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PrescriptionDetailsComponent } from './prescription-details/prescriptio
         CommonModule,
         ReactiveFormsModule,
         PrescriptionRoutingModule,
-        MatButtonModule
+        MatButtonModule,
+        MatInputModule
     ]
 })
 export class PrescriptionModule { }
