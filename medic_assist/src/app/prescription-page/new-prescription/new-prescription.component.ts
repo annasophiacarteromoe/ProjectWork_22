@@ -133,4 +133,8 @@ export class NewPrescriptionComponent implements OnInit {
 
   //  doc.save('test.pdf');
   }
+
+  goBack(){
+    this.router.navigate(['prescription-page/'])
+  }
 }

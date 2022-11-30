@@ -32,8 +32,8 @@ export class PrescriptionDetailsComponent implements OnInit {
     return arr[0]
   }
 
-  go2PrescriptionMain(){
-    this.router.navigate(['prescription-page'])
+  goBack(){
+    this.router.navigate(['prescription-page/showSaved'])
   }
 
 }
