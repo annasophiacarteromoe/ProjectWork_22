@@ -1,6 +1,6 @@
 
 import {CommonModule} from '@angular/common';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, ModuleWithComponentFactories} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {
   AbstractControl,
@@ -17,6 +17,7 @@ import {FormArrayService} from "../../PrescriptionService/form-array.service";
 import jsPDF from 'jspdf';
 import {PassArrayService} from "../../PrescriptionService/pass-array.service";
 import {SupabaseService} from "../../supabaseService/supabase.service";
+import {MedicationInterface} from "../../search-page/interfaces/medication-interface";
 //import "jspdf";
 
 //declare var jsPDF2: any;
@@ -47,7 +48,21 @@ export class NewPrescriptionComponent implements OnInit {
               ){
   }
 
-  ngOnInit(): void {
+  async ngOnInit(){
+    let list = this.getMeds()
+    let arr: any[] = []
+    let arr2: MedicationInterface[] = []
+
+    for (const name of list) {
+      arr.push((await this.supabase.showSavedMeds(name)).data)
+    }
+
+    console.log(arr)
+    arr.forEach(x => console.log(x[0]))
+
+    arr.forEach(o => arr2.push(o[0]))
+    console.log(arr2)
+
   }
 
   onSubmit() {
@@ -96,6 +111,30 @@ export class NewPrescriptionComponent implements OnInit {
 
   getMeds() {
     return this.medsArray.returnArray()
+  }
+
+  async getMedicationsList(){
+    let list = this.getMeds()
+    let arr: any[] = []
+    let arr2: MedicationInterface[]=[]
+
+      for (const name of list) {
+        arr.push((await this.supabase.showSavedMeds(name)).data)
+      }
+
+      console.log(arr)
+    arr.forEach(x => console.log(x[0]))
+
+     arr.forEach(o => arr2.push(o[0]))
+    console.log(arr2)
+
+    return arr2
+
+
+    // console.log(arr.forEach((v: any) => console.log(v.Medication_name)))
+    // console.log(list)
+    // return arr
+    // return this.supabase.showSavedMeds(list)
   }
 
   getForm(){

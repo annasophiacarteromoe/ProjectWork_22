@@ -55,6 +55,10 @@ export class SupabaseService {
     return this.supabase.from('Prescriptions').select().eq('Prescription_number', prescriptionNumber)
   }
 
+  showSavedMeds(name:string){
+    return this.supabase.from('Medication').select().eq('Medication_name',name )
+  }
+
 
 
 }

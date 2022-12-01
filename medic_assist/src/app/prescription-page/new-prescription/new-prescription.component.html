@@ -202,25 +202,25 @@
 <!--            <div id="Medication">-->
 <!--                <h4>Medication</h4>-->
 
-<!--              <table id="resultsTable">  change this-->
-<!--                <tr>-->
-<!--                  <th id="resultsTh">Medication name</th>-->
-<!--                  <th id="resultsTh">Description</th>-->
-<!--                  <th id="resultsTh">Warning</th>-->
-<!--                  <th id="resultsTh">Symptoms</th>-->
-<!--                  <th id="resultsTh">Dosage</th>-->
-<!--                  <th id="resultsTh">Delete Medication</th>-->
-<!--                </tr>-->
-<!--                <tr *ngFor="let data of getMedicationsList() | async">-->
+              <table id="resultsTable">
+                <tr>
+                  <th id="resultsTh">Medication name</th>
+                  <th id="resultsTh">Description</th>
+                  <th id="resultsTh">Warning</th>
+                  <th id="resultsTh">Symptoms</th>
+                  <th id="resultsTh">Dosage</th>
+                  <th id="resultsTh">Delete Medication</th>
+                </tr>
+                <tr *ngFor="let data of getMedicationsList() | async">
 
-<!--                  <td id="resultsTd">{{data}}</td>-->
-<!--                  <td id="resultsTd">{{data}}</td>-->
-<!--                  <td id="resultsTd">{{data}}</td>-->
-<!--                  <td id="resultsTd">{{data}}</td>-->
-<!--                  <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput" value="10"> ml</td>-->
+                  <td id="resultsTd">{{data.Medication_name}}</td>
+                  <td id="resultsTd">{{data.Description}}</td>
+                  <td id="resultsTd">{{data.Warnings}}</td>
+                  <td id="resultsTd">{{data.Symptoms}}</td>
+                  <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput" value="10"> ml</td>
 <!--                  <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>-->
-<!--                </tr>-->
-<!--              </table>-->
+                </tr>
+              </table>
 <!--&lt;!&ndash;                <button routerLink="search" class="big-button" title="new prescription">Add medication</button><br><br>&ndash;&gt;-->
 
 <!--            </div>-->
