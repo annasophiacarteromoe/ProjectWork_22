@@ -18,18 +18,19 @@
 	  display: flex;
 	  align-items: center;
 	  justify-content: center;
-	  height: 200px;
+	  height: 100px;
+    width: 100%;
+    background-color: rgb(5, 5, 178)
   }
 
-  .a button {
-	  padding: 10px;
-	  font-size: 16px;
-	  background: rgb(49, 8, 214);
-	}
-
-  .a button:hover {
-    background-color: #000;
+  .btn-primary:hover {
+    background-color: rgb(10, 220, 209) !important;
   }
+
+  .btn-primary:focus {
+    background-color: rgb(5, 232, 65) !important;
+  }
+
 
   mat-card {
     padding: 50px;
