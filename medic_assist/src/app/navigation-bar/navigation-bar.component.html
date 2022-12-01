@@ -1,6 +1,26 @@
-<nav>
-    <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Home</a>
+
+<mat-toolbar color="primary">
+    <span>
+        <img src= "assets/MedicAssistLogo - Copy.png" alt="" width="50" height="50">
+        Medic Assist
+    </span>
+    <span class="fill-remaining-space"></span>
+    <button mat-button [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Home</button>
+    <button mat-button [routerLink]="['/prescription-page']" routerLinkActive="active">Create prescription</button>
+    <button mat-button [routerLink]="['search-page']" routerLinkActive="active">Search medication</button>
+    <button mat-button [routerLink]="['contact-page']" routerLinkActive="active">Get Help</button>
+</mat-toolbar>
+
+<!-- The navigation menu -->
+<!-- <div class="navbar">
+    <a class="active" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+        <img
+        src="assets/MedicAssistLogo - Copy.png"
+        height="30"
+        alt=""
+        loading="lazy"
+      />Medic Assist</a>
     <a [routerLink]="['/prescription-page']" routerLinkActive="active">Create prescription</a>
     <a [routerLink]="['search-page']" routerLinkActive="active">Search medication</a>
     <a [routerLink]="['contact-page']" routerLinkActive="active">Get Help</a>
-</nav>
+</div> -->
