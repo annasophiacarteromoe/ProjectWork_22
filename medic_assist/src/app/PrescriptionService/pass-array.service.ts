@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import {MedicationInterface} from "../search-page/interfaces/medication-interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PassArrayService {
-  meds2prescriptionArray: string[]
+  meds2prescriptionArray: MedicationInterface[]
 
   constructor() {
     this.meds2prescriptionArray = []
@@ -14,12 +15,18 @@ export class PassArrayService {
     console.log(this.meds2prescriptionArray)
   }
 
-  addMed(med:string):void{
+  addMed(med:MedicationInterface):void{
     this.meds2prescriptionArray.push(med)
   }
 
-  returnArray(): string[]{
+  returnArray(): MedicationInterface[]{
     return this.meds2prescriptionArray
+  }
+
+  returnMedName(): string[]{
+    let arr: string[] = []
+    this.meds2prescriptionArray.forEach(value => {arr.push(value.Medication_name)})
+    return arr
   }
 
   // deleteMed(med:string):void{ //could be used to delete

@@ -211,7 +211,7 @@
                   <th id="resultsTh">Dosage</th>
                   <th id="resultsTh">Delete Medication</th>
                 </tr>
-                <tr *ngFor="let data of getMedicationsList() | async">
+                <tr *ngFor="let data of getMeds()">
 
                   <td id="resultsTd">{{data.Medication_name}}</td>
                   <td id="resultsTd">{{data.Description}}</td>
@@ -240,7 +240,7 @@
                 <br/>
 
                 <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
-              <button mat-raised-button (click)="getMedicationsList()"  title="save medictaions">Save prescripton</button>
+              <button mat-raised-button (click)="savePrescription()"  title="save medictaions">Save prescripton</button>
               <button mat-raised-button (click)="goToSearchPage()"  title="add medictaions">Add medications</button> <br><br>
               <br><br>
 

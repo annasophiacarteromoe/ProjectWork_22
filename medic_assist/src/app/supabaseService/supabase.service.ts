@@ -9,6 +9,7 @@ import {environment} from 'src/environments/environment'
 import {HttpResponseBase} from "@angular/common/http";
 import {Prescription, SavedPrescriptions} from "../prescription.type";
 import {Observable} from "rxjs";
+import {MedicationInterface} from "../search-page/interfaces/medication-interface";
 
 export interface Profile {
   username: string
@@ -55,7 +56,7 @@ export class SupabaseService {
     return this.supabase.from('Prescriptions').select().eq('Prescription_number', prescriptionNumber)
   }
 
-  showSavedMeds(name:string){
+  showSavedMeds(name:any){
     return this.supabase.from('Medication').select().eq('Medication_name',name )
   }
 
