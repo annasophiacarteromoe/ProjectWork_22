@@ -26,6 +26,8 @@ export class SearchPageComponent implements OnInit {
 
   promtSearchBy(){
     this.content = this._searchBySymptoms ? "Symptoms" : "Medication";
+    this.myControl.setValue('')
+
   }
 
   ngOnInit(){
@@ -43,6 +45,7 @@ export class SearchPageComponent implements OnInit {
 
   private _filter(name: string): MedicationInterface[] {
     const filterValue = this.searchQueryTransform(name);
+    console.log(filterValue)
     return this.medicationData.filter(option => this._searchBySymptoms ? option.Symptoms.toLowerCase().match(new RegExp(filterValue)) : option.Medication_name.toLowerCase().match(new RegExp(filterValue)));
   }
 
@@ -53,7 +56,6 @@ export class SearchPageComponent implements OnInit {
   searchQueryTransform(name: string): string{
     var query = name.toLowerCase().replace(/,/gi,')(?=.*');
     query = '(?=.*'+ query +')';
-
     return query;
   }
 
