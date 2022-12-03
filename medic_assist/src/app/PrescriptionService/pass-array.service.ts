@@ -29,6 +29,22 @@ export class PassArrayService {
     return arr
   }
 
+  returnDescripions(): string[]{
+  let arr: string[] = []
+  this.meds2prescriptionArray.forEach(value => {arr.push(value.Description)})
+  return arr
+}
+  returnWarnings(): string[]{
+    let arr: string[] = []
+    this.meds2prescriptionArray.forEach(value => {arr.push(value.Warnings)})
+    return arr
+  }
+  returnSymptoms(): string[]{
+    let arr: string[] = []
+    this.meds2prescriptionArray.forEach(value => {arr.push(value.Symptoms)})
+    return arr
+  }
+
   // deleteMed(med:string):void{ //could be used to delete
   //   this.meds2prescriptionArray.forEach((value,index)=>{
   //     if(value==med) this.meds2prescriptionArray.splice(index,1);

@@ -49,19 +49,19 @@ export class NewPrescriptionComponent implements OnInit {
   }
 
   async ngOnInit(){
-    let list = this.getMeds()
-    let arr: any[] = []
-    let arr2: MedicationInterface[] = []
-
-    for (const name of list) {
-      arr.push((await this.supabase.showSavedMeds(name)).data)
-    }
-
-    console.log(arr)
-    arr.forEach(x => console.log(x[0]))
-
-    arr.forEach(o => arr2.push(o[0]))
-    console.log(arr2)
+    // let list = this.getMeds()
+    // let arr: any[] = []
+    // let arr2: MedicationInterface[] = []
+    //
+    // for (const name of list) {
+    //   arr.push((await this.supabase.showSavedMeds(name)).data)
+    // }
+    //
+    // console.log(arr)
+    // arr.forEach(x => console.log(x[0]))
+    //
+    // arr.forEach(o => arr2.push(o[0]))
+    // console.log(arr2)
 
   }
 
@@ -113,37 +113,13 @@ export class NewPrescriptionComponent implements OnInit {
     return this.medsArray.returnArray()
   }
 
-  // async getMedicationsList(){
-  //   let list = this.getMeds()
-  //   let arr: any[] = []
-  //   let arr2: MedicationInterface[]=[]
-  //
-  //     for (const name of list) {
-  //       arr.push((await this.supabase.showSavedMeds(name)).data)
-  //     }
-  //
-  //     console.log(arr)
-  //   arr.forEach(x => console.log(x[0]))
-  //
-  //    arr.forEach(o => arr2.push(o[0]))
-  //   console.log(arr2)
-  //
-  //   return arr2
-  //
-  //
-  //   // console.log(arr.forEach((v: any) => console.log(v.Medication_name)))
-  //   // console.log(list)
-  //   // return arr
-  //   // return this.supabase.showSavedMeds(list)
-  // }
-
   getForm(){
     return this.formArray.returnArray()
   }
 
   savePrescription() {
     this.onClick()
-    this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName())
+    this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms() )
   }
 
   goToSearchPage() {

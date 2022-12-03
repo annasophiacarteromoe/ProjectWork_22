@@ -23,4 +23,7 @@ export interface PrescriptionDetails {
   Comment: string;
   Date: string;
   Medications:[]
+  Descriptions: []
+  Warnings:[]
+  Symptoms:[]
 }

@@ -23,11 +23,16 @@
 <table id="resultsTable">
   <tr>
     <th id="resultsTh">Medication name</th>
+    <th id="resultsTh">Description</th>
+    <th id="resultsTh">Warning</th>
+    <th id="resultsTh">Symptom</th>
     <th id="resultsTh">Dosage</th>
   </tr>
-  <tr *ngFor="let data of getMeds()">
+  <tr *ngFor="let data of getMeds(), let i = index">
 
     <td id="resultsTd">{{data}}</td>
+    <td id="resultsTd">{{getWarning()[i]}}</td>
+    <td id="resultsTd">{{getSymptoms()[i]}}</td>
     <td id="resultsTd">dosage</td>
   </tr>
 </table>

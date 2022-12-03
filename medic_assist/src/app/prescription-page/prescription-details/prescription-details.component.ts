@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SupabaseService} from "../../supabaseService/supabase.service";
 import {PrescriptionNumberService} from "../../PrescriptionService/prescription-number.service";
-import { PrescriptionDetails, SavedPrescriptions} from "../../prescription.type";
+import { PrescriptionDetails} from "../../prescription.type";
 import {Router} from "@angular/router";
-import {SavedPrescriptionsComponent} from "../saved-prescriptions/saved-prescriptions.component";
 
 @Component({
   selector: 'app-prescription-details',
@@ -21,13 +20,33 @@ export class PrescriptionDetailsComponent implements OnInit {
       // @ts-ignore
       this.prescriptionArray = data.data!
     })
-
+  }
+  getMeds():string[]{
+    let arr = []
+    // this.prescriptionArray.forEach(value => {console.log(value.Medications)})
+    arr.push(this.prescriptionArray.forEach(value => {arr.push(value.Medications)}))
+    // @ts-ignore
+    return arr[0]
   }
 
-  getMeds():string[]{
-    var arr = []
-    this.prescriptionArray.forEach(value => {console.log(value.Medications)})
-    arr.push(this.prescriptionArray.forEach(value => {arr.push(value.Medications)}))
+  getDescriptions():string[]{
+    let arr = []
+    // this.prescriptionArray.forEach(value => {console.log(value.Descriptions)})
+    arr.push(this.prescriptionArray.forEach(value => {arr.push(value.Descriptions)}))
+    // @ts-ignore
+    return arr[0]
+  }
+  getWarning():string[]{
+    let arr = []
+    // this.prescriptionArray.forEach(value => {console.log(value.Descriptions)})
+    arr.push(this.prescriptionArray.forEach(value => {arr.push(value.Warnings)}))
+    // @ts-ignore
+    return arr[0]
+  }
+  getSymptoms():string[]{
+    let arr = []
+    // this.prescriptionArray.forEach(value => {console.log(value.Descriptions)})
+    arr.push(this.prescriptionArray.forEach(value => {arr.push(value.Symptoms)}))
     // @ts-ignore
     return arr[0]
   }
