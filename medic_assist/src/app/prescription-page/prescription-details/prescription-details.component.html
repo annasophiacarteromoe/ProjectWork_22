@@ -1,0 +1,41 @@
+<p></p>
+
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Provider number</th>
+    <th id="resultsTh">Date</th>
+    <th id="resultsTh">Patient name</th>
+    <th id="resultsTh">Patient DOB</th>
+    <th id="resultsTh">Doctor name</th>
+    <th id="resultsTh">Comment</th>
+  </tr>
+  <tr *ngFor="let data of prescriptionArray">
+    <td id="resultsTd">{{data.Provider_number}}</td>
+    <td id="resultsTd">{{data.Date}}</td>
+    <td id="resultsTd">{{data.Patient_name}}</td>
+    <td id="resultsTd">{{data.Patient_DOB}}</td>
+    <td id="resultsTd">{{data.Doctor_name}}</td>
+    <td id="resultsTd">{{data.Comment}}</td>
+
+  </tr>
+</table>
+
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Medication name</th>
+    <th id="resultsTh">Description</th>
+    <th id="resultsTh">Warning</th>
+    <th id="resultsTh">Symptom</th>
+    <th id="resultsTh">Dosage</th>
+  </tr>
+  <tr *ngFor="let data of getMeds(), let i = index">
+
+    <td id="resultsTd">{{data}}</td>
+    <td id="resultsTd">{{getWarning()[i]}}</td>
+    <td id="resultsTd">{{getSymptoms()[i]}}</td>
+    <td id="resultsTd">dosage</td>
+  </tr>
+</table>
+
+<button mat-raised-button (click)="goBack()">Go back</button>
+

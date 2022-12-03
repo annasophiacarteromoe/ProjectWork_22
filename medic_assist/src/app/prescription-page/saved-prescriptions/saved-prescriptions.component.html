@@ -1,0 +1,21 @@
+<p></p>
+
+<table id="resultsTable">
+  <tr>
+    <th id="resultsTh">Prescription number</th>
+    <th id="resultsTh">Date</th>
+    <th id="resultsTh">Patient name</th>
+    <th id="resultsTh">Show details</th>
+  </tr>
+  <tr *ngFor="let data of prescriptionArray; let i=index">
+
+    <td id="resultsTd">{{data.Prescription_number}}</td>
+    <td id="resultsTd">{{data.Date}}</td>
+    <td id="resultsTd">{{data.Patient_name}}</td>
+    <td id="resultsTd"><button mat-raised-button (click)="showDetails(data.Prescription_number)" routerLink="details" title="details">Show details</button></td>
+
+
+  </tr>
+</table>
+
+<button mat-raised-button (click)="goBack()">Go back</button>

@@ -19,9 +19,6 @@ export class SearchPageComponent implements OnInit {
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
-  @Output() arrayEmit = new EventEmitter<string[]>()
-  array: string[] =[];
-  a = PassArrayService
 
   _searchBySymptoms: boolean = true;
   content:string = "Symptoms"
@@ -29,6 +26,8 @@ export class SearchPageComponent implements OnInit {
 
   promtSearchBy(){
     this.content = this._searchBySymptoms ? "Symptoms" : "Medication";
+    this.myControl.setValue('')
+
   }
 
   ngOnInit(){
@@ -46,6 +45,7 @@ export class SearchPageComponent implements OnInit {
 
   private _filter(name: string): MedicationInterface[] {
     const filterValue = this.searchQueryTransform(name);
+    console.log(filterValue)
     return this.medicationData.filter(option => this._searchBySymptoms ? option.Symptoms.toLowerCase().match(new RegExp(filterValue)) : option.Medication_name.toLowerCase().match(new RegExp(filterValue)));
   }
 
@@ -56,7 +56,6 @@ export class SearchPageComponent implements OnInit {
   searchQueryTransform(name: string): string{
     var query = name.toLowerCase().replace(/,/gi,')(?=.*');
     query = '(?=.*'+ query +')';
-
     return query;
   }
 
@@ -65,10 +64,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   saveMeds(meds: MedicationInterface){
-    // this.array.push("test")
-    // this.array.push("test2")
-    // this.arrayEmit.emit(this.array);
-    this.passArrayService.addMed(meds.Medication_name);
+    this.passArrayService.addMed(meds);
     alert(`You've added ${meds.Medication_name} to the prescription 💊`)
 
   }
