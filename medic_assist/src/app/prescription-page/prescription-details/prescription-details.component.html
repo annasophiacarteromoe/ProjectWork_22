@@ -1,42 +1,103 @@
 <p></p>
 
-<table id="resultsTable">
-  <tr>
-    <th id="resultsTh">Provider number</th>
-    <th id="resultsTh">Date</th>
-    <th id="resultsTh">Patient name</th>
-    <th id="resultsTh">Patient DOB</th>
-    <th id="resultsTh">Doctor name</th>
-    <th id="resultsTh">Comment</th>
-  </tr>
-  <tr *ngFor="let data of prescriptionArray">
-    <td id="resultsTd">{{data.Provider_number}}</td>
-    <td id="resultsTd">{{data.Date}}</td>
-    <td id="resultsTd">{{data.Patient_name}}</td>
-    <td id="resultsTd">{{data.Patient_DOB}}</td>
-    <td id="resultsTd">{{data.Doctor_name}}</td>
-    <td id="resultsTd">{{data.Comment}}</td>
+<table mat-table [dataSource]="prescriptionArray" class="mat-elevation-z8">
+<!--  <tr>-->
+<!--    <th id="resultsTh">Provider number</th>-->
+<!--    <th id="resultsTh">Date</th>-->
+<!--    <th id="resultsTh">Patient name</th>-->
+<!--    <th id="resultsTh">Patient DOB</th>-->
+<!--    <th id="resultsTh">Doctor name</th>-->
+<!--    <th id="resultsTh">Comment</th>-->
+<!--  </tr>-->
+<!--  <tr *ngFor="let data of prescriptionArray">-->
+<!--    <td id="resultsTd">{{data.Provider_number}}</td>-->
+<!--    <td id="resultsTd">{{data.Date}}</td>-->
+<!--    <td id="resultsTd">{{data.Patient_name}}</td>-->
+<!--    <td id="resultsTd">{{data.Patient_DOB}}</td>-->
+<!--    <td id="resultsTd">{{data.Doctor_name}}</td>-->
+<!--    <td id="resultsTd">{{data.Comment}}</td>-->
 
-  </tr>
+<!--  </tr>-->
+
+  <ng-container matColumnDef="Provider_number">
+    <th mat-header-cell *matHeaderCellDef>Provider number</th>
+    <th></th>
+    <td mat-cell *matCellDef="let element"> {{element.Provider_number}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Patient_name">
+    <th mat-header-cell *matHeaderCellDef>Patient name</th>
+    <td mat-cell *matCellDef="let element"> {{element.Patient_name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Patient_DOB">
+    <th mat-header-cell *matHeaderCellDef>Patient DOB</th>
+    <td mat-cell *matCellDef="let element"> {{element.Patient_DOB}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Doctor_name">
+    <th mat-header-cell *matHeaderCellDef>Doctor name</th>
+    <td mat-cell *matCellDef="let element"> {{element.Doctor_name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Comment">
+    <th mat-header-cell *matHeaderCellDef>Comment</th>
+    <td mat-cell *matCellDef="let element"> {{element.Comment}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsCredentials"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsCredentials;"></tr>
+</table>
+<br/><br/>
+<table mat-table [dataSource]="getMeds()" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Medication_name">
+    <th mat-header-cell *matHeaderCellDef>Medication name</th>
+    <td mat-cell *matCellDef="let element"> {{element}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let i = index"> {{getDescriptions()[i]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Warning">
+    <th mat-header-cell *matHeaderCellDef>Warning</th>
+    <td mat-cell *matCellDef="let i = index"> {{getWarning()[i]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Symptoms">
+    <th mat-header-cell *matHeaderCellDef>Symptoms</th>
+    <td mat-cell *matCellDef="let i = index"> {{getSymptoms()[i]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Dosage">
+    <th mat-header-cell *matHeaderCellDef>Dosage [ml]</th>
+    <td mat-cell *matCellDef="let i = index"> {{getDosage()[i]}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsMeds"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsMeds;"></tr>
 </table>
 
-<table id="resultsTable">
-  <tr>
-    <th id="resultsTh">Medication name</th>
-    <th id="resultsTh">Description</th>
-    <th id="resultsTh">Warning</th>
-    <th id="resultsTh">Symptom</th>
-    <th id="resultsTh">Dosage</th>
-  </tr>
-  <tr *ngFor="let data of getMeds(), let i = index">
+<!--<table id="resultsTable">-->
+<!--  <tr>-->
+<!--    <th id="resultsTh">Medication name</th>-->
+<!--    <th id="resultsTh">Description</th>-->
+<!--    <th id="resultsTh">Warning</th>-->
+<!--    <th id="resultsTh">Symptom</th>-->
+<!--    <th id="resultsTh">Dosage</th>-->
+<!--  </tr>-->
+<!--  <tr *ngFor="let data of getMeds(), let i = index">-->
 
-    <td id="resultsTd">{{data}}</td>
-    <td id="resultsTd">{{getDescriptions()[i]}}</td>
-    <td id="resultsTd">{{getWarning()[i]}}</td>
-    <td id="resultsTd">{{getSymptoms()[i]}}</td>
-    <td id="resultsTd">{{getDosage()[i]}} ml</td>
-  </tr>
-</table>
+<!--    <td id="resultsTd">{{data}}</td>-->
+<!--    <td id="resultsTd">{{getDescriptions()[i]}}</td>-->
+<!--    <td id="resultsTd">{{getWarning()[i]}}</td>-->
+<!--    <td id="resultsTd">{{getSymptoms()[i]}}</td>-->
+<!--    <td id="resultsTd">{{getDosage()[i]}} ml</td>-->
+<!--  </tr>-->
+<!--</table>-->
 
 <button mat-raised-button (click)="goBack()">Go back</button>
 

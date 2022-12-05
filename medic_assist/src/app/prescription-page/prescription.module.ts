@@ -8,6 +8,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { SavedPrescriptionsComponent } from './saved-prescriptions/saved-prescriptions.component';
 import { PrescriptionDetailsComponent } from './prescription-details/prescription-details.component';
 import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
+import {CdkListboxModule} from "@angular/cdk/listbox";
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import {MatInputModule} from "@angular/material/input";
     PrescriptionDetailsComponent
   ],
 
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        PrescriptionRoutingModule,
-        MatButtonModule,
-        MatInputModule
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    PrescriptionRoutingModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    CdkListboxModule
+  ]
 })
 export class PrescriptionModule { }

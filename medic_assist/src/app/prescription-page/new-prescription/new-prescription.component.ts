@@ -43,9 +43,9 @@ export class NewPrescriptionComponent {
               private formArray: FormArrayService,
               private medsArray: PassArrayService,
               private supabase: SupabaseService,
-  ) {
-  }
+  ) {}
 
+  displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
   arrayLen: number = 0

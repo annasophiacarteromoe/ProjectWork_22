@@ -14,6 +14,7 @@ export class SavedPrescriptionsComponent implements OnInit {
   constructor(private readonly supabase: SupabaseService, private prescriptionNubmer:PrescriptionNumberService,  private router: Router) { }
 
   prescriptionArray:SavedPrescriptions[]=[];
+  displayedColumns = ['Prescription_number', 'Date', 'Patient_name']
   ngOnInit(){
     this.supabase.showSaved.then(data =>{
       // @ts-ignore

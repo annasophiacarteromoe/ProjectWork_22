@@ -51,7 +51,7 @@ select option {
   text-align: right;
 }
 
-.centerTable, tr, td{
+.centerTable{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -62,4 +62,28 @@ select option {
   /*border: 1px solid grey;*/
   /*border-collapse: collapse;*/
   /*padding: 5px;*/
+}
+
+#matTable{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: pink;
+
+}
+
+.mat-row {
+  height: auto;
+
+}
+
+.mat-cell{
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+}
+
+.mat-header-cell{
+  text-align: center;
+  font-weight: bold;
+  font-palette: dark;
 }

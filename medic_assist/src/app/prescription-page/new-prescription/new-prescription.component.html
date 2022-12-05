@@ -107,24 +107,61 @@
                     </tbody>
                 </table>
             </div>
-              <table id="resultsTable">
-                <tr>
-                  <th id="resultsTh">Medication name</th>
-                  <th id="resultsTh">Description</th>
-                  <th id="resultsTh">Warning</th>
-                  <th id="resultsTh">Symptoms</th>
-                  <th id="resultsTh">Dosage</th>
-                  <th id="resultsTh">Delete Medication</th>
-                </tr>
-                <tr *ngFor="let data of getMeds(); let i = index">
 
-                  <td id="resultsTd">{{data.Medication_name}}</td>
-                  <td id="resultsTd">{{data.Description}}</td>
-                  <td id="resultsTd">{{data.Warnings}}</td>
-                  <td id="resultsTd">{{data.Symptoms}}</td>
-                  <td id="resultsTd"><input size="3" type="text" value="---" (change)="saveDosages($event,i)" > ml</td>
-                </tr>
-              </table>
+          <table mat-table [dataSource]="getMeds()" id="matTable">
+
+            <ng-container matColumnDef="Medication_name">
+              <th mat-header-cell *matHeaderCellDef>Medication name</th>
+              <td mat-cell *matCellDef="let element"> {{element.Medication_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Warning">
+              <th mat-header-cell *matHeaderCellDef>Warning</th>
+              <td mat-cell *matCellDef="let element"> {{element.Warnings}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Symptoms">
+              <th mat-header-cell *matHeaderCellDef>Symptoms</th>
+              <td mat-cell *matCellDef="let element"> {{element.Symptoms}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Dosage">
+              <th mat-header-cell *matHeaderCellDef>Dosage [ml]</th>
+              <td mat-cell *matCellDef="let i = index"><input size="3" type="text" value="---" (change)="saveDosages($event,i)" ></td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element"> Delete </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+<!--              <table id="resultsTable">-->
+<!--                <tr>-->
+<!--                  <th id="resultsTh">Medication name</th>-->
+<!--                  <th id="resultsTh">Description</th>-->
+<!--                  <th id="resultsTh">Warning</th>-->
+<!--                  <th id="resultsTh">Symptoms</th>-->
+<!--                  <th id="resultsTh">Dosage</th>-->
+<!--                  <th id="resultsTh">Delete Medication</th>-->
+<!--                </tr>-->
+<!--                <tr *ngFor="let data of getMeds(); let i = index">-->
+
+<!--                  <td id="resultsTd">{{data.Medication_name}}</td>-->
+<!--                  <td id="resultsTd">{{data.Description}}</td>-->
+<!--                  <td id="resultsTd">{{data.Warnings}}</td>-->
+<!--                  <td id="resultsTd">{{data.Symptoms}}</td>-->
+<!--                  <td id="resultsTd"><input size="3" type="text" value="-&#45;&#45;" (change)="saveDosages($event,i)" > ml</td>-->
+<!--                </tr>-->
+<!--              </table>-->
             <div>
                 <br/>
 

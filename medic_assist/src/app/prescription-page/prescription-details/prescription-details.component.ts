@@ -14,6 +14,8 @@ export class PrescriptionDetailsComponent implements OnInit {
   constructor(private supabase: SupabaseService,private prescriptionNumber:PrescriptionNumberService, private router: Router) { }
 
   prescriptionArray:PrescriptionDetails[]=[];
+  displayedColumnsCredentials:string[]=['Provider_number', 'Date', 'Patient_DOB' ,'Patient_name', 'Doctor_name', 'Comment'];
+  displayedColumnsMeds:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage']
 
   ngOnInit(): void {
     this.supabase.showPrescriptionDetails(this.prescriptionNumber.getNumber).then(data =>{
