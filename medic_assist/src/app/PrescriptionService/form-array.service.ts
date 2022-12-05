@@ -33,4 +33,10 @@ export class FormArrayService {
   returnArray() {
     return this.formArray
   }
+
+  clear(){
+    this.formArray = {
+      Comment: "", Date: "", Doctor_name: "", Patient_DOB: "", Patient_name: "", Provider_number: 0
+    }
+  }
 }

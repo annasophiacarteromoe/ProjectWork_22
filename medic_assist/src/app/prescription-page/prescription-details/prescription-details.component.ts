@@ -51,6 +51,15 @@ export class PrescriptionDetailsComponent implements OnInit {
     return arr[0]
   }
 
+  getDosage():string[]{
+    let arr = []
+    this.prescriptionArray.forEach(value => {console.log(value.Dosage)})
+    arr.push(this.prescriptionArray.forEach(value => {arr.push(value.Dosage)}))
+    // @ts-ignore
+    return arr[0]
+  }
+
+
   goBack(){
     this.router.navigate(['prescription-page/showSaved'])
   }

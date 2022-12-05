@@ -211,13 +211,13 @@
                   <th id="resultsTh">Dosage</th>
                   <th id="resultsTh">Delete Medication</th>
                 </tr>
-                <tr *ngFor="let data of getMeds()">
+                <tr *ngFor="let data of getMeds(); let i = index">
 
                   <td id="resultsTd">{{data.Medication_name}}</td>
                   <td id="resultsTd">{{data.Description}}</td>
                   <td id="resultsTd">{{data.Warnings}}</td>
                   <td id="resultsTd">{{data.Symptoms}}</td>
-                  <td id="resultsTd"><input type="text" formControlName="dosage" id="dosageInput" value="10"> ml</td>
+                  <td id="resultsTd"><input size="3" type="text" value="---" (change)="saveDosages($event,i)" > ml</td>
 <!--                  <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>-->
                 </tr>
               </table>
@@ -251,4 +251,4 @@
     </form>
 </div>
 
-
+x

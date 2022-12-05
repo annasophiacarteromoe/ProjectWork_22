@@ -36,7 +36,7 @@ export class SupabaseService {
 
   }
 
-  async savePrescription(form: Prescription, meds: string[], descr: string[], warns: string[], symp: string[]) {
+  async savePrescription(form: Prescription, meds: string[], descr: string[], warns: string[], symp: string[], dosages:string[]) {
     await this.supabase.from('Prescriptions').insert({
       Provider_number: form.Provider_number,
       Patient_name: form.Patient_name,
@@ -47,7 +47,8 @@ export class SupabaseService {
       Warnings: warns,
       Descriptions: descr,
       Symptoms: symp,
-      Date: form.Date
+      Date: form.Date,
+      Dosage: dosages
     })
   }
 

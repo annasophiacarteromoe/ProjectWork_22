@@ -26,4 +26,5 @@ export interface PrescriptionDetails {
   Descriptions: []
   Warnings:[]
   Symptoms:[]
+  Dosage:[]
 }

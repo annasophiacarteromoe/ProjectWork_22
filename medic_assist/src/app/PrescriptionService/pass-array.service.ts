@@ -45,6 +45,10 @@ export class PassArrayService {
     return arr
   }
 
+  clear(){
+    this.meds2prescriptionArray = []
+  }
+
   // deleteMed(med:string):void{ //could be used to delete
   //   this.meds2prescriptionArray.forEach((value,index)=>{
   //     if(value==med) this.meds2prescriptionArray.splice(index,1);

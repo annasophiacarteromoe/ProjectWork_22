@@ -31,9 +31,10 @@
   <tr *ngFor="let data of getMeds(), let i = index">
 
     <td id="resultsTd">{{data}}</td>
+    <td id="resultsTd">{{getDescriptions()[i]}}</td>
     <td id="resultsTd">{{getWarning()[i]}}</td>
     <td id="resultsTd">{{getSymptoms()[i]}}</td>
-    <td id="resultsTd">dosage</td>
+    <td id="resultsTd">{{getDosage()[i]}} ml</td>
   </tr>
 </table>
 
