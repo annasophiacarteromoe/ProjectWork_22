@@ -3,74 +3,6 @@
 <!--error handling does not work-->
 <div>
     <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
-<!--        <div>-->
-<!--            <div>-->
-<!--                <div class="form-wrapper">-->
-<!--                    <label>Doctor name: </label>-->
-<!--                    <br/>-->
-<!--                </div>-->
-
-<!--                <div>-->
-<!--                    <input type="text" formControlName="doctor_name">-->
-<!--                    <br/>-->
-<!--                </div>-->
-<!--                <br/>-->
-<!--            </div>-->
-
-<!--            <div>-->
-<!--                <div>-->
-<!--                    <label>Provider number: </label>-->
-<!--                    <br/>-->
-<!--                </div>-->
-
-<!--                <div>-->
-<!--                    <input type="number" min="0" step="1" formControlName="provider_number">-->
-<!--                <br/>-->
-<!--                </div>-->
-
-<!--                <mat-error *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)" class="error">-->
-<!--                    <mat-error *ngIf="provider_number.errors?.['required']">-->
-<!--                        Provider number is required!-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <br/>-->
-<!--            </div>-->
-
-<!--            <div>-->
-<!--                <div>-->
-<!--                    <label>Patient name: </label>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <input type="text" formControlName="patient_name">-->
-<!--                </div>-->
-<!--                <br/>-->
-<!--            </div>-->
-
-<!--            <div>-->
-<!--                <div>-->
-<!--                    <label>Patient DOB: </label>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <input type="text" formControlName="patient_dob">-->
-<!--                </div>-->
-<!--                <br/>-->
-<!--            </div>-->
-
-<!--            <div>-->
-<!--                <div>-->
-<!--                    <label>Comment: </label>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <input type="text" formControlName="comments">-->
-<!--                </div>-->
-
-<!--                <mat-error *ngIf="comments.invalid && (comments.dirty || comments.touched)" class="error">-->
-<!--                    <mat-error *ngIf="comments.errors?.['required']">-->
-<!--                        Comment is required!-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <br/>-->
-
 <br/><br/>
 
 <div class="container" id="content" #content>
@@ -172,36 +104,9 @@
                             </td>
 
                         </tr>
-<!--                    <tr><button (click)="onClick()">Create</button> <br><br></tr>-->
                     </tbody>
                 </table>
             </div>
-<!--          <div>-->
-<!--            <h4>Prescription</h4>-->
-
-<!--            <table id="resultsTable">-->
-<!--              <tr>-->
-<!--                <th id="resultsTh">Provider number</th>-->
-<!--                <th id="resultsTh">Date</th>-->
-<!--                <th id="resultsTh">Patient name</th>-->
-<!--                <th id="resultsTh">Patient DOB</th>-->
-<!--                <th id="resultsTh">Doctor name</th>-->
-<!--                <th id="resultsTh">Comment</th>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td id="resultsTd">{{getForm().Provider_number}}</td>-->
-<!--                <td id="resultsTd">{{getForm().Date}}</td>-->
-<!--                <td id="resultsTd">{{getForm().Patient_name}}</td>-->
-<!--                <td id="resultsTd">{{getForm().Patient_DOB}}</td>-->
-<!--                <td id="resultsTd">{{getForm().Doctor_name}}</td>-->
-<!--                <td id="resultsTd">{{getForm().Comment}}</td>-->
-
-<!--              </tr>-->
-<!--            </table>-->
-<!--          </div>-->
-<!--            <div id="Medication">-->
-<!--                <h4>Medication</h4>-->
-
               <table id="resultsTable">
                 <tr>
                   <th id="resultsTh">Medication name</th>
@@ -218,25 +123,9 @@
                   <td id="resultsTd">{{data.Warnings}}</td>
                   <td id="resultsTd">{{data.Symptoms}}</td>
                   <td id="resultsTd"><input size="3" type="text" value="---" (change)="saveDosages($event,i)" > ml</td>
-<!--                  <td id="resultsTd" (click)="onDelete(data)"><button mat-raised-button>Delete Medication</button></td>-->
                 </tr>
               </table>
-<!--&lt;!&ndash;                <button routerLink="search" class="big-button" title="new prescription">Add medication</button><br><br>&ndash;&gt;-->
-
-<!--            </div>-->
             <div>
-
-<!--                <div>-->
-<!--                    <label>Date: </label>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <input type="date" formControlName="date">-->
-<!--                </div>-->
-<!--                <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="error">-->
-<!--                    <mat-error *ngIf="date.errors?.['required']">-->
-<!--                        Date is required!-->
-<!--                    </div>-->
-<!--                </div>-->
                 <br/>
 
                 <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
@@ -250,5 +139,3 @@
         </div>
     </form>
 </div>
-
-x
