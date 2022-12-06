@@ -10,13 +10,10 @@
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="line-height: 1.5">
 
-            <!-- <p>{{option.Medication_name}}</p> -->
             <span>
             <div id="textMeds">{{option.Medication_name}}</div>
             <div id="subtextSymptoms">{{option.Symptoms}}</div>
           </span>
-
-            <!-- {{option.Symptoms}}  meanig here to .Symptoms -->
 
           </mat-option>
         </mat-autocomplete>
@@ -65,28 +62,5 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
-<!--<table id="resultsTable">-->
-<!--  <tr>-->
-<!--    <th id="resultsTh">Medication name</th>-->
-<!--    <th id="resultsTh">Description</th>-->
-<!--    <th id="resultsTh">Side effects</th>-->
-<!--    <th id="resultsTh">Warnings</th>-->
-<!--    <th id="resultsTh">Symptoms</th>-->
-<!--    <th id="resultsTh">Add Medication</th>-->
-<!--  </tr>-->
-<!--  <tr *ngFor="let data of filteredOptions | async; let i=index">-->
-
-<!--    <td id="resultsTd">{{data.Medication_name}}</td>-->
-<!--    <td id="resultsTd">{{data.Description}}</td>-->
-<!--    <td id="resultsTd">{{data.Side_effects}}</td>-->
-<!--    <td id="resultsTd">{{data.Warnings}}</td>-->
-<!--    <td id="resultsTd">{{data.Symptoms}}</td>-->
-<!--    <td id="resultsTd">-->
-<!--      <button (click)="saveMeds(data)" mat-raised-button>Add Medication</button>-->
-<!--    </td>-->
-
-
-<!--  </tr>-->
-<!--</table>-->
 <p></p>
 <p></p>

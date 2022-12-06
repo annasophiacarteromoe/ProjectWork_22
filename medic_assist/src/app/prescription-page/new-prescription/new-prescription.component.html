@@ -2,111 +2,115 @@
 
 <!--error handling does not work-->
 <div>
-    <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
-<br/><br/>
+  <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
+    <br/><br/>
 
-<div class="container" id="content" #content>
-    <h2>MedicAssist Prescription</h2>
-    <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
+    <div class="container" id="content" #content>
+      <h2>MedicAssist Prescription</h2>
+      <form [formGroup]="newPrescriptionForm" (ngSubmit)="onSubmit()">
         <div class="form-wrapper">
-            <div id="doctor_info">
-                <h4>MedicAssist Doctor Information</h4>
-                <i>Aarhus Universitet
-                    <br/>
-                    Exchange Student Prescription Platform
-                </i>
-                    <div>
-                        <div>
-                            <labeL>Doctor name:  &nbsp; </labeL>
-                          <mat-form-field class="example-full-width">
-                            <input matInput type="text" formControlName="doctor_name" [(ngModel)]="getForm().Doctor_name">
-                            <mat-error *ngIf="doctor_name.invalid && (doctor_name.dirty || doctor_name.touched)" class="error">
-                              <mat-error *ngIf="doctor_name.errors?.['required']">
-                                Doctor's name is required!
-                              </mat-error>
-                            </mat-error>
-                        </mat-form-field>
+          <div id="doctor_info">
+            <h4>MedicAssist Doctor Information</h4>
+            <i>Aarhus Universitet
+              <br/>
+              Exchange Student Prescription Platform
+            </i>
+            <div>
+              <div>
+                <labeL>Doctor name: &nbsp; </labeL>
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" formControlName="doctor_name" [(ngModel)]="getForm().Doctor_name">
+                  <mat-error *ngIf="doctor_name.invalid && (doctor_name.dirty || doctor_name.touched)" class="error">
+                    <mat-error *ngIf="doctor_name.errors?.['required']">
+                      Doctor's name is required!
+                    </mat-error>
+                  </mat-error>
+                </mat-form-field>
 
-                        </div>
-                    </div>
+              </div>
+            </div>
 
-                    <div>
-                        <label>Provider number:  &nbsp;</label>
-                      <mat-form-field class="example-full-width">
-                        <input matInput type="number" min="0" step="1" formControlName="provider_number" [(ngModel)]="getForm().Provider_number">
-                        <mat-error *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)" class="error">
-                            <mat-error *ngIf="provider_number.errors?.['required']">
-                                Provider number is required!
-                            </mat-error>
+            <div>
+              <label>Provider number: &nbsp;</label>
+              <mat-form-field class="example-full-width">
+                <input matInput type="number" min="0" step="1" formControlName="provider_number"
+                       [(ngModel)]="getForm().Provider_number">
+                <mat-error *ngIf="provider_number.invalid && (provider_number.dirty || provider_number.touched)"
+                           class="error">
+                  <mat-error *ngIf="provider_number.errors?.['required']">
+                    Provider number is required!
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div id="patient_info">
+            <h4>Patient information</h4>
+            <table class="centerTable">
+              <tbody>
+              <tr>
+                <td>
+                  <div>
+                    <label>Patient name: &nbsp;</label>
+                    <mat-form-field class="example-full-width">
+                      <input matInput type="text" formControlName="patient_name" [(ngModel)]="getForm().Patient_name">
+                      <mat-error *ngIf="patient_name.invalid && (patient_name.dirty || patient_name.touched)"
+                                 class="error">
+                        <mat-error *ngIf="patient_name.errors?.['required']">
+                          Patient name is required!
                         </mat-error>
-                      </mat-form-field>
-                    </div>
-            </div>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td>
+                </td>
+                <td>
+                  <div>
+                    <label>Patient DOB: &nbsp;</label>
+                    <mat-form-field class="example-full-width">
+                      <input matInput type="text" formControlName="patient_dob" [(ngModel)]="getForm().Patient_DOB">
+                      <mat-error *ngIf="patient_dob.invalid && (patient_dob.dirty || patient_dob.touched)"
+                                 class="error">
+                        <mat-error *ngIf="patient_dob.errors?.['required']">
+                          Patient DOB is required!
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </td>
 
-            <div id="patient_info">
-                <h4>Patient information</h4>
-                <table class="centerTable">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label>Patient name:  &nbsp;</label>
-                                    <mat-form-field class="example-full-width">
-                                    <input matInput type="text" formControlName="patient_name" [(ngModel)]="getForm().Patient_name">
-                                      <mat-error *ngIf="patient_name.invalid && (patient_name.dirty || patient_name.touched)" class="error">
-                                        <mat-error *ngIf="patient_name.errors?.['required']">
-                                          Patient name is required!
-                                        </mat-error>
-                                      </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <div>
-                                    <label>Patient DOB:  &nbsp;</label>
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput type="text" formControlName="patient_dob" [(ngModel)]="getForm().Patient_DOB">
-                                    <mat-error *ngIf="patient_dob.invalid && (patient_dob.dirty || patient_dob.touched)" class="error">
-                                      <mat-error *ngIf="patient_dob.errors?.['required']">
-                                        Patient DOB is required!
-                                      </mat-error>
-                                    </mat-error>
-                                  </mat-form-field>
-                                </div>
-                            </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <label>Comment: &nbsp;</label>
+                    <mat-form-field class="example-full-width">
+                      <input matInput type="text" formControlName="comments" [(ngModel)]="getForm().Comment">
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td>
+                </td>
+                <td>
+                  <div>
+                    <label>Date: &nbsp;</label>
+                    <mat-form-field class="example-full-width">
+                      <input matInput type="date" formControlName="date" [(ngModel)]="getForm().Date">
+                      <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
+                        <mat-error *ngIf="date.errors?.['required']">
+                          Date is required!
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </td>
 
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label>Comment:  &nbsp;</label>
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput type="text" formControlName="comments" [(ngModel)]="getForm().Comment">
-                                  </mat-form-field>
-                                </div>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <div>
-                                    <label>Date:  &nbsp;</label>
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput type="date"  formControlName="date" [(ngModel)]="getForm().Date">
-                                    <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
-                                      <mat-error *ngIf="date.errors?.['required']">
-                                        Date is required!
-                                      </mat-error>
-                                    </mat-error>
-                                  </mat-form-field>
-                                </div>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+              </tr>
+              </tbody>
+            </table>
+          </div>
 
           <table mat-table [dataSource]="getMeds()" id="matTable">
 
@@ -132,47 +136,30 @@
 
             <ng-container matColumnDef="Dosage">
               <th mat-header-cell *matHeaderCellDef>Dosage [ml]</th>
-              <td mat-cell *matCellDef="let i = index"><input size="3" type="text" value="---" (change)="saveDosages($event,i)" ></td>
+              <td mat-cell *matCellDef="let i = index"><input size="3" type="text" value="---"
+                                                              (change)="saveDosages($event,i)"></td>
             </ng-container>
 
             <ng-container matColumnDef="delete">
               <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let element"> Delete </td>
+              <td mat-cell *matCellDef="let element"> Delete</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+          <div>
+            <br/>
 
-<!--              <table id="resultsTable">-->
-<!--                <tr>-->
-<!--                  <th id="resultsTh">Medication name</th>-->
-<!--                  <th id="resultsTh">Description</th>-->
-<!--                  <th id="resultsTh">Warning</th>-->
-<!--                  <th id="resultsTh">Symptoms</th>-->
-<!--                  <th id="resultsTh">Dosage</th>-->
-<!--                  <th id="resultsTh">Delete Medication</th>-->
-<!--                </tr>-->
-<!--                <tr *ngFor="let data of getMeds(); let i = index">-->
-
-<!--                  <td id="resultsTd">{{data.Medication_name}}</td>-->
-<!--                  <td id="resultsTd">{{data.Description}}</td>-->
-<!--                  <td id="resultsTd">{{data.Warnings}}</td>-->
-<!--                  <td id="resultsTd">{{data.Symptoms}}</td>-->
-<!--                  <td id="resultsTd"><input size="3" type="text" value="-&#45;&#45;" (change)="saveDosages($event,i)" > ml</td>-->
-<!--                </tr>-->
-<!--              </table>-->
-            <div>
-                <br/>
-
-                <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
-              <button mat-raised-button (click)="savePrescription()"  title="save medictaions">Save prescripton</button>
-              <button mat-raised-button (click)="goToSearchPage()"  title="add medictaions">Add medications</button> <br><br>
-              <br><br>
+            <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
+            <button mat-raised-button (click)="savePrescription()" title="save medictaions">Save prescripton</button>
+            <button mat-raised-button (click)="goToSearchPage()" title="add medictaions">Add medications</button>
+            <br><br>
+            <br><br>
 
 
-            </div>
+          </div>
           <button mat-raised-button (click)="goBack()">Go back</button>
         </div>
-    </form>
-</div>
+      </form>
+    </div>

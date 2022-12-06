@@ -34,18 +34,6 @@ select option {
     border-bottom: 1px solid;
 }
 
-#resultsTable, #resultsTh, #resultsTd {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-
-  table-layout: fixed;
-  width: 80%;
-}
-
 #dosageInput{
   width: 20%;
   text-align: right;
@@ -55,13 +43,6 @@ select option {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-
-  /*table-layout: fixed;*/
-  /*width: 80%;*/
-
-  /*border: 1px solid grey;*/
-  /*border-collapse: collapse;*/
-  /*padding: 5px;*/
 }
 
 #matTable{
@@ -69,12 +50,10 @@ select option {
   margin-left: auto;
   margin-right: auto;
   background-color: pink;
-
 }
 
 .mat-row {
   height: auto;
-
 }
 
 .mat-cell{
