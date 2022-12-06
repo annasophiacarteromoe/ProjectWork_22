@@ -1,6 +1,6 @@
 <p></p>
 
-<table mat-table [dataSource]="prescriptionArray" class="mat-elevation-z8">
+<table mat-table [dataSource]="prescriptionArray">
 <!--  <tr>-->
 <!--    <th id="resultsTh">Provider number</th>-->
 <!--    <th id="resultsTh">Date</th>-->
@@ -54,7 +54,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumnsCredentials;"></tr>
 </table>
 <br/><br/>
-<table mat-table [dataSource]="getMeds()" class="mat-elevation-z8">
+<table mat-table [dataSource]="getMeds()">
 
   <ng-container matColumnDef="Medication_name">
     <th mat-header-cell *matHeaderCellDef>Medication name</th>
