@@ -9,7 +9,6 @@ import { SavedPrescriptionsComponent } from './saved-prescriptions/saved-prescri
 import { PrescriptionDetailsComponent } from './prescription-details/prescription-details.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
-import {CdkListboxModule} from "@angular/cdk/listbox";
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import {CdkListboxModule} from "@angular/cdk/listbox";
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    CdkListboxModule
   ]
 })
 export class PrescriptionModule { }
