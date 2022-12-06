@@ -93,7 +93,7 @@
                                 <div>
                                     <label>Date:  &nbsp;</label>
                                   <mat-form-field class="example-full-width">
-                                    <input matInput type="date" formControlName="date" [(ngModel)]="getForm().Date">
+                                    <input matInput type="date"  formControlName="date" [(ngModel)]="getForm().Date">
                                     <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
                                       <mat-error *ngIf="date.errors?.['required']">
                                         Date is required!

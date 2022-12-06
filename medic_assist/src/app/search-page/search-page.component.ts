@@ -20,6 +20,8 @@ export class SearchPageComponent implements OnInit {
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
 
+  displayedColumns:string[]=['Medication_name', 'Description', 'Side_effects','Warning', 'Symptoms', 'Add']
+
   _searchBySymptoms: boolean = true;
   content:string = "Symptoms"
   constructor(private readonly supabase: SupabaseService, private passArrayService: PassArrayService) {}

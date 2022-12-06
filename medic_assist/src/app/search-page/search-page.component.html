@@ -1,55 +1,92 @@
-<p> </p>
+<p></p>
 <p></p>
 
 <table id="searchTable">
   <td id="searchTd">
-  <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
 
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="line-height: 1.5">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [scrollTop]="true">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="line-height: 1.5">
 
             <!-- <p>{{option.Medication_name}}</p> -->
             <span>
             <div id="textMeds">{{option.Medication_name}}</div>
-            <div id="subtextSymptoms" >{{option.Symptoms}}</div>
+            <div id="subtextSymptoms">{{option.Symptoms}}</div>
           </span>
 
-          <!-- {{option.Symptoms}}  meanig here to .Symptoms -->
+            <!-- {{option.Symptoms}}  meanig here to .Symptoms -->
 
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
 
-</td>
-<td id="searchTd">
-  <mat-slide-toggle [(ngModel)]="_searchBySymptoms" (change)=promtSearchBy() class="switch">Searching by: {{content}} </mat-slide-toggle>
-</td>
+  </td>
+  <td id="searchTd">
+    <mat-slide-toggle [(ngModel)]="_searchBySymptoms" (change)=promtSearchBy() class="switch">Searching
+      by: {{content}} </mat-slide-toggle>
+  </td>
 
 </table>
 
-<table id="resultsTable">
-  <tr>
-      <th id="resultsTh">Medication name</th>
-      <th id="resultsTh">Description</th>
-      <th id="resultsTh">Side effects</th>
-      <th id="resultsTh">Warnings</th>
-      <th id="resultsTh">Symptoms</th>
-      <th id="resultsTh">Add Medication</th>
-  </tr>
-<tr *ngFor="let data of filteredOptions | async; let i=index">
 
- <td id="resultsTd">{{data.Medication_name}}</td>
- <td id="resultsTd">{{data.Description}}</td>
- <td id="resultsTd">{{data.Side_effects}}</td>
- <td id="resultsTd">{{data.Warnings}}</td>
- <td id="resultsTd">{{data.Symptoms}}</td>
- <td id="resultsTd"><button (click)="saveMeds(data)" mat-raised-button>Add Medication</button></td>
+<table mat-table [dataSource]="filteredOptions">
 
 
-</tr>
+  <ng-container matColumnDef="Medication_name">
+    <th mat-header-cell *matHeaderCellDef>Medication name</th>
+    <td mat-cell *matCellDef="let element"> {{element.Medication_name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Warning">
+    <th mat-header-cell *matHeaderCellDef>Warning</th>
+    <td mat-cell *matCellDef="let element"> {{element.Warnings}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Symptoms">
+    <th mat-header-cell *matHeaderCellDef>Symptoms</th>
+    <td mat-cell *matCellDef="let element"> {{element.Symptoms}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Side_effects">
+    <th mat-header-cell *matHeaderCellDef>Side effects</th>
+    <td mat-cell *matCellDef="let element"> {{element.Side_effects}}</td>
+  </ng-container>
+  <ng-container matColumnDef="Add">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element"><button (click)="saveMeds(element)" mat-raised-button>Add Medication</button></td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>
+<!--<table id="resultsTable">-->
+<!--  <tr>-->
+<!--    <th id="resultsTh">Medication name</th>-->
+<!--    <th id="resultsTh">Description</th>-->
+<!--    <th id="resultsTh">Side effects</th>-->
+<!--    <th id="resultsTh">Warnings</th>-->
+<!--    <th id="resultsTh">Symptoms</th>-->
+<!--    <th id="resultsTh">Add Medication</th>-->
+<!--  </tr>-->
+<!--  <tr *ngFor="let data of filteredOptions | async; let i=index">-->
+
+<!--    <td id="resultsTd">{{data.Medication_name}}</td>-->
+<!--    <td id="resultsTd">{{data.Description}}</td>-->
+<!--    <td id="resultsTd">{{data.Side_effects}}</td>-->
+<!--    <td id="resultsTd">{{data.Warnings}}</td>-->
+<!--    <td id="resultsTd">{{data.Symptoms}}</td>-->
+<!--    <td id="resultsTd">-->
+<!--      <button (click)="saveMeds(data)" mat-raised-button>Add Medication</button>-->
+<!--    </td>-->
+
+
+<!--  </tr>-->
+<!--</table>-->
 <p></p>
 <p></p>
