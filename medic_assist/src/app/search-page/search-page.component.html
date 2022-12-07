@@ -2,7 +2,9 @@
 <p></p>
 
 <table id="searchTable">
-  <td><button mat-raised-button (click)="onBackToPrescription()">{{this.flag.getName}}</button></td>
+  <td>
+    <button mat-raised-button (click)="onBackToPrescription()">{{this.flag.getName}}</button>
+  </td>
   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
   <td id="searchTd">
     <form class="example-form">
@@ -35,7 +37,10 @@
 
 
   <ng-container matColumnDef="Medication_name">
-    <th mat-header-cell *matHeaderCellDef>Medication name</th>
+    <th mat-header-cell *matHeaderCellDef>
+      <div *ngIf="!_searchBySymptoms" id="color">Medication name</div>
+      <div *ngIf="_searchBySymptoms">Medication name</div>
+    </th>
     <td mat-cell *matCellDef="let element"> {{element.Medication_name}} </td>
   </ng-container>
   <ng-container matColumnDef="Description">
@@ -47,8 +52,11 @@
     <td mat-cell *matCellDef="let element"> {{element.Warnings}} </td>
   </ng-container>
   <ng-container matColumnDef="Symptoms">
-    <th mat-header-cell *matHeaderCellDef>Symptoms</th>
-    <td mat-cell *matCellDef="let element"> {{element.Symptoms}} </td>
+    <th mat-header-cell *matHeaderCellDef>
+      <div *ngIf="_searchBySymptoms" id="color">Symptoms</div>
+      <div *ngIf="!_searchBySymptoms">Symptoms</div>
+    </th>
+    <td mat-cell *matCellDef="let element">{{element.Symptoms}} </td>
   </ng-container>
   <ng-container matColumnDef="Side_effects">
     <th mat-header-cell *matHeaderCellDef>Side effects</th>
