@@ -4,8 +4,8 @@ import { MedicationInterface } from './interfaces/medication-interface';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import {PassArrayService} from "../PrescriptionService/pass-array.service";
-import { MatInput } from '@angular/material/input';
-import * as Console from "console";
+import {TextButtonService} from "../PrescriptionService/text-button.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search-page',
@@ -19,12 +19,12 @@ export class SearchPageComponent implements OnInit {
   medicationData: MedicationInterface[] = [];
   filteredOptions!: Observable<MedicationInterface[]>;
   filteredSearchOptions!: Observable<MedicationInterface[]>;
-
+  flag = this.flagService
   displayedColumns:string[]=['Medication_name', 'Description', 'Side_effects','Warning', 'Symptoms', 'Add']
 
   _searchBySymptoms: boolean = true;
   content:string = "Symptoms"
-  constructor(private readonly supabase: SupabaseService, private passArrayService: PassArrayService) {}
+  constructor(private readonly supabase: SupabaseService, private passArrayService: PassArrayService, private flagService:TextButtonService, private router: Router) {}
 
   promtSearchBy(){
     this.content = this._searchBySymptoms ? "Symptoms" : "Medication";
@@ -33,6 +33,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.flagService.changeFlag()
     this.supabase.allMedication.then(data => {
       this.medicationData = data.data!
       this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -70,4 +71,9 @@ export class SearchPageComponent implements OnInit {
     alert(`You've added ${meds.Medication_name} to the prescription 💊`)
 
   }
+
+  onBackToPrescription(){
+    this.router.navigate(['prescription-page/prescription'])
+  }
+
 }

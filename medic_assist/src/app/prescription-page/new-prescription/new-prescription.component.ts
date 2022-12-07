@@ -17,6 +17,7 @@ import jsPDF from 'jspdf';
 import {PassArrayService} from "../../PrescriptionService/pass-array.service";
 import {SupabaseService} from "../../supabaseService/supabase.service";
 import {MedicationInterface} from "../../search-page/interfaces/medication-interface";
+import {TextButtonService} from "../../PrescriptionService/text-button.service";
 //import "jspdf";
 
 // declare var jsPDF: any;
@@ -27,7 +28,7 @@ import {MedicationInterface} from "../../search-page/interfaces/medication-inter
   templateUrl: './new-prescription.component.html',
   styleUrls: ['./new-prescription.component.css']
 })
-export class NewPrescriptionComponent {
+export class NewPrescriptionComponent implements OnInit{
 
   newPrescriptionForm: FormGroup = this.fb.group({
     doctor_name: ['', Validators.required],
@@ -43,12 +44,16 @@ export class NewPrescriptionComponent {
               private formArray: FormArrayService,
               private medsArray: PassArrayService,
               private supabase: SupabaseService,
+              private flagService:TextButtonService
   ) {}
+
+  ngOnInit(): void {
+    this.flagService.changeFlag()
+  }
 
   displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
-  arrayLen: number = 0
 
   onSubmit() {
     console.log(this.newPrescriptionForm.value)
@@ -101,13 +106,11 @@ export class NewPrescriptionComponent {
     }
     this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
     this.clearData()
-
   }
 
   goToSearchPage() {
     this.router.navigate(['/search-page'])
   }
-
   saveDosages(event: any, i: any) {
     this.dosageDict.set(i, event.target.value)
   }
@@ -159,6 +162,8 @@ export class NewPrescriptionComponent {
   goBack() {
     this.router.navigate(['prescription-page/'])
   }
+
+
 
 
 }
