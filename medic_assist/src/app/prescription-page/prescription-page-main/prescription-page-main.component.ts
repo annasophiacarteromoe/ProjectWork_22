@@ -15,32 +15,11 @@ export class PrescriptionPageMainComponent implements OnInit {
 
   buttonText = this.textButtonService.getName
 
-  constructor(private textButtonService: TextButtonService,
-              private formArray: FormArrayService,
-              private medsArray: PassArrayService) {
-  }
-
+  constructor(private textButtonService: TextButtonService,) {}
 
   ngOnInit(): void {
     this.textButtonService.changeButtonText()
     this.buttonText = this.textButtonService.getName
   }
 
-
-//   changeButtonText() {
-//     if (this.getForm().Doctor_name || this.getForm().Provider_number || this.getForm().Patient_name || this.getForm().Patient_DOB || this.getForm().Date || this.getMeds().length) {
-//       this.textButtonService.setName = "Show current prescription"
-//     } else {
-//       this.textButtonService.setName = "Create new prescription"
-//     }
-//   }
-//
-//   getForm(){
-//     return this.formArray.returnArray()
-//   }
-//
-//   getMeds(){
-//     return this.medsArray.returnArray()
-//   }
-// }
 }

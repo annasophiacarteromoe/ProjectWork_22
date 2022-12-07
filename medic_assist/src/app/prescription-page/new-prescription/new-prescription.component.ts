@@ -28,7 +28,7 @@ import {TextButtonService} from "../../PrescriptionService/text-button.service";
   templateUrl: './new-prescription.component.html',
   styleUrls: ['./new-prescription.component.css']
 })
-export class NewPrescriptionComponent {
+export class NewPrescriptionComponent implements OnInit{
 
   newPrescriptionForm: FormGroup = this.fb.group({
     doctor_name: ['', Validators.required],
@@ -47,10 +47,13 @@ export class NewPrescriptionComponent {
               private flagService:TextButtonService
   ) {}
 
+  ngOnInit(): void {
+    this.flagService.changeFlag()
+  }
+
   displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
-  arrayLen: number = 0
 
   onSubmit() {
     console.log(this.newPrescriptionForm.value)
@@ -103,12 +106,9 @@ export class NewPrescriptionComponent {
     }
     this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
     this.clearData()
-    this.flagService.setFlag=false
-
   }
 
   goToSearchPage() {
-    this.flagService.setFlag=true
     this.router.navigate(['/search-page'])
   }
   saveDosages(event: any, i: any) {
@@ -162,6 +162,8 @@ export class NewPrescriptionComponent {
   goBack() {
     this.router.navigate(['prescription-page/'])
   }
+
+
 
 
 }

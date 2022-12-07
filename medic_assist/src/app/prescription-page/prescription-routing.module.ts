@@ -8,9 +8,9 @@ import {PrescriptionDetailsComponent} from "./prescription-details/prescription-
 
 const routes: Routes = [
   { path: '', component: PrescriptionPageMainComponent },
-  { path: 'add', component: NewPrescriptionComponent },
-  {path: 'showSaved', component: SavedPrescriptionsComponent},
-  {path: 'showSaved/details', component:PrescriptionDetailsComponent},
+  { path: 'prescription', component: NewPrescriptionComponent },
+  { path: 'showSaved', component: SavedPrescriptionsComponent},
+  { path: 'showSaved/details', component:PrescriptionDetailsComponent},
   { path: 'search', component: SearchPageComponent }
 
 ];
