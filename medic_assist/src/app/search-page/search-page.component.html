@@ -2,6 +2,8 @@
 <p></p>
 
 <table id="searchTable">
+  <td *ngIf="this.flag"><button mat-raised-button >Back to prescription</button></td>
+  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
   <td id="searchTd">
     <form class="example-form">
       <mat-form-field class="example-full-width" appearance="fill">
@@ -54,7 +56,9 @@
   </ng-container>
   <ng-container matColumnDef="Add">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element"><button (click)="saveMeds(element)" mat-raised-button>Add Medication</button></td>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="saveMeds(element)" mat-raised-button>Add Medication</button>
+    </td>
   </ng-container>
 
 

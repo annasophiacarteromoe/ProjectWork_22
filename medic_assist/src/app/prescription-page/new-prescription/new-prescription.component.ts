@@ -17,6 +17,7 @@ import jsPDF from 'jspdf';
 import {PassArrayService} from "../../PrescriptionService/pass-array.service";
 import {SupabaseService} from "../../supabaseService/supabase.service";
 import {MedicationInterface} from "../../search-page/interfaces/medication-interface";
+import {TextButtonService} from "../../PrescriptionService/text-button.service";
 //import "jspdf";
 
 // declare var jsPDF: any;
@@ -43,6 +44,7 @@ export class NewPrescriptionComponent {
               private formArray: FormArrayService,
               private medsArray: PassArrayService,
               private supabase: SupabaseService,
+              private flagService:TextButtonService
   ) {}
 
   displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
@@ -101,13 +103,14 @@ export class NewPrescriptionComponent {
     }
     this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
     this.clearData()
+    this.flagService.setFlag=false
 
   }
 
   goToSearchPage() {
+    this.flagService.setFlag=true
     this.router.navigate(['/search-page'])
   }
-
   saveDosages(event: any, i: any) {
     this.dosageDict.set(i, event.target.value)
   }
