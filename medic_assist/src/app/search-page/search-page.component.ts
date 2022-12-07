@@ -68,6 +68,7 @@ export class SearchPageComponent implements OnInit {
 
   saveMeds(meds: MedicationInterface){
     this.passArrayService.addMed(meds);
+    this.flagService.setFlag = true
     alert(`You've added ${meds.Medication_name} to the prescription 💊`)
 
   }
