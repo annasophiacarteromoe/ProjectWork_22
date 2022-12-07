@@ -33,7 +33,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.flagService.changeFlag()
+    this.flagService.changeButtonText()
     this.supabase.allMedication.then(data => {
       this.medicationData = data.data!
       this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -62,13 +62,12 @@ export class SearchPageComponent implements OnInit {
     return query;
   }
 
-  changeAutocompletion(option: MedicationInterface) {
-   return this._searchBySymptoms ? option.Symptoms : option.Medication_name;
-  }
+  // changeAutocompletion(option: MedicationInterface) {
+  //  return this._searchBySymptoms ? option.Symptoms : option.Medication_name;
+  // }
 
   saveMeds(meds: MedicationInterface){
     this.passArrayService.addMed(meds);
-    this.flagService.setFlag = true
     alert(`You've added ${meds.Medication_name} to the prescription 💊`)
 
   }

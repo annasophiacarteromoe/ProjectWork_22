@@ -48,7 +48,6 @@ export class NewPrescriptionComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.flagService.changeFlag()
   }
 
   displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']

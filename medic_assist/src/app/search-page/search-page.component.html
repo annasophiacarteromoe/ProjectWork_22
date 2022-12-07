@@ -2,7 +2,7 @@
 <p></p>
 
 <table id="searchTable">
-  <td *ngIf="this.flag.getFlag"><button mat-raised-button (click)="onBackToPrescription()" >Back to prescription</button></td>
+  <td><button mat-raised-button (click)="onBackToPrescription()">{{this.flag.getName}}</button></td>
   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
   <td id="searchTd">
     <form class="example-form">
