@@ -94,9 +94,17 @@
                         Feedback: {{ q.feedback }}
                     </mat-card-subtitle>
             
-                    <mat-card-content>
-                        Answer: {{ q.answer }}
+
+                    <mat-card-content *ngIf=" q.answer!=''; else default ">
+                            Answer: {{ q.answer }}
                     </mat-card-content>
+
+                    <ng-template #default>
+                        <mat-card-content>
+                            Answer: Thank you for submitting your feedback. MedicAssist will respond to you shortly.
+                        </mat-card-content>
+                    </ng-template>
+
             
                     <mat-card-actions>
                         <button
@@ -120,9 +128,15 @@
                         Feedback: {{ q.feedback }}
                     </mat-card-subtitle>
             
-                    <mat-card-content>
-                        Answer: {{ q.answer }}
+                    <mat-card-content *ngIf=" q.answer!=''; else default ">
+                            Answer: {{ q.answer }}
                     </mat-card-content>
+
+                    <ng-template #default>
+                        <mat-card-content>
+                            Answer: Thank you for submitting your feedback. MedicAssist will respond to you shortly.
+                        </mat-card-content>
+                    </ng-template>
             
                     <mat-card-actions>
                         <button
