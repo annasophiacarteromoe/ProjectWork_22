@@ -1,21 +1,37 @@
-nav {
-    display: flex;
-    gap: 0.5rem;
-}
-
-a {
-    flex: 1;
-    background-color: #333;
-    color: #fff;
-    border: 1px solid;
-    padding: 0.5rem;
-    text-align: center;
+/* Style the navigation menu */
+.navbar {
+    width: 100%;
+    background-color: rgb(19, 36, 225);
+    overflow: auto;
+  }
+  
+  /* Navigation links */
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
     text-decoration: none;
-    transition: all 0.5s ease-out;
-}
-
-a:hover,
-a.active {
-    background-color: #fff;
-    color: #333;
-}
+    font-size: 17px;
+    width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    text-align: center; /* If you want the text to be centered */
+  }
+  
+  /* Add a background color on mouse-over */
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  /* Style the current/active link */
+  .navbar a.active {
+    background-color: #000906;
+  }
+  
+  /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: left; /* If you want the text to be left-aligned on small screens */
+    }
+  }
