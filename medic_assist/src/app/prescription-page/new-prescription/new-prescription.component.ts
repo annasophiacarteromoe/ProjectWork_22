@@ -44,11 +44,9 @@ export class NewPrescriptionComponent implements OnInit{
               private formArray: FormArrayService,
               private medsArray: PassArrayService,
               private supabase: SupabaseService,
-              private flagService:TextButtonService
   ) {}
 
   ngOnInit(): void {
-    this.flagService.changeFlag()
   }
 
   displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
@@ -99,13 +97,18 @@ export class NewPrescriptionComponent implements OnInit{
   }
 
   savePrescription() {
-    this.onClick()
-    for (let i = 0; i < this.dosageDict.size; i++) {
-      // @ts-ignore
-      this.dosageArray.push(this.dosageDict.get(i))
+    if(!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid || (this.getMeds().length == 0))){
+      this.onClick()
+      for (let i = 0; i < this.dosageDict.size; i++) {
+        // @ts-ignore
+        this.dosageArray.push(this.dosageDict.get(i))
+      }
+      this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
+      this.clearData()
+    }else {
+      alert("Please check if every required field is filled and at least 1 medication is added")
     }
-    this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
-    this.clearData()
+
   }
 
   goToSearchPage() {
@@ -162,8 +165,5 @@ export class NewPrescriptionComponent implements OnInit{
   goBack() {
     this.router.navigate(['prescription-page/'])
   }
-
-
-
 
 }
