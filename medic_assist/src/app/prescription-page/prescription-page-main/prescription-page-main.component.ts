@@ -15,7 +15,7 @@ export class PrescriptionPageMainComponent implements OnInit {
 
   buttonText = this.textButtonService.getName
 
-  constructor(private textButtonService: TextButtonService,) {}
+  constructor(private textButtonService: TextButtonService) {}
 
   ngOnInit(): void {
     this.textButtonService.changeButtonText()
