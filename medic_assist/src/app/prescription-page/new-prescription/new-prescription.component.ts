@@ -98,7 +98,8 @@ export class NewPrescriptionComponent implements OnInit {
   }
 
   savePrescription() {
-    if (!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid || (this.getMeds().length == 0))) {
+    if (!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid
+      || (this.getMeds().length == 0))) {
       let sureness = confirm("Does every medication💊 has dosage??")
       if (sureness) {
         this.onClick()
@@ -106,7 +107,8 @@ export class NewPrescriptionComponent implements OnInit {
           // @ts-ignore
           this.dosageArray.push(this.dosageDict.get(i))
         }
-        this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
+        this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(),
+          this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
         this.clearData()
       } else {
         alert("Please look at dosage column 😁")

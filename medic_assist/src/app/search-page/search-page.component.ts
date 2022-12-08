@@ -57,7 +57,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchQueryTransform(name: string): string {
-    var query = name.toLowerCase().replace(/,/gi, ')(?=.*');
+    let query = name.toLowerCase().replace(/,/gi, ')(?=.*');
     query = '(?=.*' + query + ')';
     return query;
   }
