@@ -66,3 +66,9 @@ select option {
   font-weight: bold;
   font-palette: dark;
 }
+
+#center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

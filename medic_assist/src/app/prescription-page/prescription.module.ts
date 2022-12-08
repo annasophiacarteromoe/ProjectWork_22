@@ -9,6 +9,7 @@ import { SavedPrescriptionsComponent } from './saved-prescriptions/saved-prescri
 import { PrescriptionDetailsComponent } from './prescription-details/prescription-details.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import {MatTableModule} from "@angular/material/table";
     PrescriptionDetailsComponent
   ],
 
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    PrescriptionRoutingModule,
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule,
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        PrescriptionRoutingModule,
+        MatButtonModule,
+        MatInputModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
+    ]
 })
 export class PrescriptionModule { }

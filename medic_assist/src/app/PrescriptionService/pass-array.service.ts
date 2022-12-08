@@ -49,9 +49,11 @@ export class PassArrayService {
     this.meds2prescriptionArray = []
   }
 
-  // deleteMed(med:string):void{ //could be used to delete
-  //   this.meds2prescriptionArray.forEach((value,index)=>{
-  //     if(value==med) this.meds2prescriptionArray.splice(index,1);
-  //   });
-  // }
+  deleteMed(med:any):void{ //could be used to delete
+    this.meds2prescriptionArray.forEach((value,index)=>{
+      if(index == med){this.meds2prescriptionArray.splice(index,1)}
+      // if(value.Medication_name==med){ this.meds2prescriptionArray.splice(index,1);}
+      console.log(this.meds2prescriptionArray)
+    });
+  }
 }

@@ -1,5 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {Component, OnInit, ViewChild, ElementRef, ModuleWithComponentFactories} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {
   AbstractControl,
@@ -36,7 +41,8 @@ export class NewPrescriptionComponent implements OnInit{
     patient_name: ['', [Validators.required]],
     patient_dob: ['', [Validators.required]],
     comments: [''],
-    date: ['', Validators.required]
+    date: ['', Validators.required],
+    dosage: ['', Validators.required]
   });
 
   constructor(private router: Router,
@@ -44,19 +50,24 @@ export class NewPrescriptionComponent implements OnInit{
               private formArray: FormArrayService,
               private medsArray: PassArrayService,
               private supabase: SupabaseService,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
-  displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
+  displayedColumns: string[] = ['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
+  flag = true
 
   onSubmit() {
     console.log(this.newPrescriptionForm.value)
   }
 
+  get dosage_val():FormControl{
+    return this.newPrescriptionForm.get('dosage') as FormControl
+  }
   get doctor_name(): FormControl {
     return this.newPrescriptionForm.get("doctor_name") as FormControl;
   }
@@ -97,7 +108,7 @@ export class NewPrescriptionComponent implements OnInit{
   }
 
   savePrescription() {
-    if(!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid || (this.getMeds().length == 0))){
+    if (!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid || (this.getMeds().length == 0))) {
       this.onClick()
       for (let i = 0; i < this.dosageDict.size; i++) {
         // @ts-ignore
@@ -105,7 +116,7 @@ export class NewPrescriptionComponent implements OnInit{
       }
       this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
       this.clearData()
-    }else {
+    } else {
       alert("Please check if every required field is filled and at least 1 medication is added")
     }
 
@@ -114,26 +125,34 @@ export class NewPrescriptionComponent implements OnInit{
   goToSearchPage() {
     this.router.navigate(['/search-page'])
   }
+
   saveDosages(event: any, i: any) {
     this.dosageDict.set(i, event.target.value)
   }
 
-  clearData(){
+  clearData() {
     this.medsArray.clear()
     this.dosageDict.clear()
     this.dosageArray = []
     this.formArray.clear()
+  }
 
+  onDelete(med: any) {
+    this.medsArray.deleteMed(med)
+    this.dosageDict.delete(med)
+    this.setFlag = false
+    setTimeout(()=>{
+      this.setFlag = true
+    },500)
 
   }
 
-  onDelete(med: string) {
-    // this.arrayService.deleteMed(med)
-
+  set setFlag(bool: boolean) {
+    this.flag = bool
   }
-
 
   @ViewChild('content') content: ElementRef;
+
 
   public SavePDF(): void {
     let content = this.content.nativeElement;
