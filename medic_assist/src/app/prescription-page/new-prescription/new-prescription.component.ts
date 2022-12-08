@@ -28,7 +28,7 @@ import {TextButtonService} from "../../PrescriptionService/text-button.service";
   templateUrl: './new-prescription.component.html',
   styleUrls: ['./new-prescription.component.css']
 })
-export class NewPrescriptionComponent implements OnInit{
+export class NewPrescriptionComponent implements OnInit {
 
   newPrescriptionForm: FormGroup = this.fb.group({
     doctor_name: ['', Validators.required],
@@ -44,12 +44,13 @@ export class NewPrescriptionComponent implements OnInit{
               private formArray: FormArrayService,
               private medsArray: PassArrayService,
               private supabase: SupabaseService,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
-  displayedColumns:string[]=['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
+  displayedColumns: string[] = ['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
 
@@ -97,16 +98,21 @@ export class NewPrescriptionComponent implements OnInit{
   }
 
   savePrescription() {
-    if(!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid || (this.getMeds().length == 0))){
-      this.onClick()
-      for (let i = 0; i < this.dosageDict.size; i++) {
-        // @ts-ignore
-        this.dosageArray.push(this.dosageDict.get(i))
+    if (!(this.doctor_name.invalid || this.provider_number.invalid || this.patient_name.invalid || this.patient_dob.invalid || this.date.invalid || (this.getMeds().length == 0))) {
+      let sureness = confirm("Does every medication💊 has dosage??")
+      if (sureness) {
+        this.onClick()
+        for (let i = 0; i < this.dosageDict.size; i++) {
+          // @ts-ignore
+          this.dosageArray.push(this.dosageDict.get(i))
+        }
+        this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
+        this.clearData()
+      } else {
+        alert("Please look at dosage column 😁")
       }
-      this.supabase.savePrescription(this.formArray.returnArray(), this.medsArray.returnMedName(), this.medsArray.returnDescripions(), this.medsArray.returnWarnings(), this.medsArray.returnSymptoms(), this.dosageArray)
-      this.clearData()
-    }else {
-      alert("Please check if every required field is filled and at least 1 medication is added")
+    } else {
+      alert("Please check if every required field is filled and at least 1 medication is added 😄")
     }
 
   }
@@ -114,11 +120,12 @@ export class NewPrescriptionComponent implements OnInit{
   goToSearchPage() {
     this.router.navigate(['/search-page'])
   }
+
   saveDosages(event: any, i: any) {
     this.dosageDict.set(i, event.target.value)
   }
 
-  clearData(){
+  clearData() {
     this.medsArray.clear()
     this.dosageDict.clear()
     this.dosageArray = []
