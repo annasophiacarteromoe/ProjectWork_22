@@ -97,12 +97,7 @@
                   <div>
                     <label>Date: &nbsp;</label>
                     <mat-form-field class="example-full-width">
-                      <input matInput type="date" formControlName="date" [(ngModel)]="getForm().Date">
-                      <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
-                        <mat-error *ngIf="date.errors?.['required']">
-                          Date is required!
-                        </mat-error>
-                      </mat-error>
+                      <input matInput type="date" formControlName="date" >
                     </mat-form-field>
                   </div>
                 </td>

@@ -36,7 +36,7 @@ export class NewPrescriptionComponent implements OnInit {
     patient_name: ['', [Validators.required]],
     patient_dob: ['', [Validators.required]],
     comments: [''],
-    date: ['', Validators.required]
+    date: new FormControl((new Date()).toISOString().substring(0,10))
   });
 
   constructor(private router: Router,
