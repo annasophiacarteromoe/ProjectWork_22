@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table'
 import {SearchPageComponent} from "./search-page/search-page.component";
 import {ContactPageComponent} from "./contact-page/contact-page.component";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
@@ -52,6 +53,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserAnimationsModule,
     FormsModule,
     MatTableModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
