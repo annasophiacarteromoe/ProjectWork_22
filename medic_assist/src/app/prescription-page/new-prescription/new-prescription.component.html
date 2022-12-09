@@ -148,7 +148,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <div>
+          <div data-html2canvas-ignore="true">
             <br/>
 
             <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
@@ -160,7 +160,7 @@
 
 
           </div>
-          <button mat-raised-button (click)="goBack()">Go back</button>
+          <button mat-raised-button (click)="goBack()" data-html2canvas-ignore="true">Go back</button>
         </div>
       </form>
     </div>
