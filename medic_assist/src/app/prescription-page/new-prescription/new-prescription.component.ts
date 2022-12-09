@@ -53,6 +53,7 @@ export class NewPrescriptionComponent implements OnInit {
   displayedColumns: string[] = ['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
+  dateVal = new Date()
 
   onSubmit() {
     console.log(this.newPrescriptionForm.value)
