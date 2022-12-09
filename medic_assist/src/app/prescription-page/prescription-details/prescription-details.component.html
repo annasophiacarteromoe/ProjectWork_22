@@ -63,6 +63,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumnsMeds"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumnsMeds;"></tr>
 </table>
-
-<button mat-raised-button (click)="goBack()">Go back</button>
-
+<div>
+  <button mat-raised-button (click)="goBack()">Go back</button>
+  <button mat-raised-button (click)="SavePDF()">Save PDF</button>
+</div>
