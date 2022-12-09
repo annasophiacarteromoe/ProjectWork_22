@@ -70,7 +70,7 @@
                   <div>
                     <label>Patient DOB: &nbsp;</label>
                     <mat-form-field class="example-full-width">
-                      <input matInput type="text" formControlName="patient_dob" [(ngModel)]="getForm().Patient_DOB">
+                      <input matInput type="date" formControlName="patient_dob" [(ngModel)]="getForm().Patient_DOB">
                       <mat-error *ngIf="patient_dob.invalid && (patient_dob.dirty || patient_dob.touched)"
                                  class="error">
                         <mat-error *ngIf="patient_dob.errors?.['required']">
