@@ -107,8 +107,10 @@
               </tbody>
             </table>
           </div>
-
-          <table mat-table [dataSource]="getMeds()" id="matTable">
+          <div id="center">
+            <mat-spinner *ngIf="!flag" class="spinner"></mat-spinner>
+          </div>
+          <table mat-table [dataSource]="getMeds()" id="matTable" *ngIf="flag">
 
             <ng-container matColumnDef="Medication_name">
               <th mat-header-cell *matHeaderCellDef>Medication name</th>
@@ -132,13 +134,15 @@
 
             <ng-container matColumnDef="Dosage">
               <th mat-header-cell *matHeaderCellDef>Dosage</th>
-              <td mat-cell *matCellDef="let i = index"><input size="3" type="text" value="---"
+              <td mat-cell *matCellDef="let i = index"><input required size="3" type="text" value="---"
                                                               (change)="saveDosages($event,i)"></td>
             </ng-container>
 
             <ng-container matColumnDef="delete">
               <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let element"> Delete</td>
+              <td mat-cell *matCellDef="let i = index">
+                <button mat-button (click)="onDelete(i)">Delete</button>
+              </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
