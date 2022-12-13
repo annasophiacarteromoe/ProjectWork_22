@@ -31,8 +31,8 @@
 
 </table>
 
-
-<table mat-table [dataSource]="filteredOptions">
+<div id="center"><mat-spinner *ngIf="!filteredOptions"></mat-spinner></div>
+<table mat-table [dataSource]="filteredOptions" *ngIf="filteredOptions">
 
 
   <ng-container matColumnDef="Medication_name">
