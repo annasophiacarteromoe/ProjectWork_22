@@ -60,7 +60,9 @@ export class SupabaseService {
     return this.supabase.from('Prescriptions').select().eq('Prescription_number', prescriptionNumber)
   }
 
-
+  deletePrescription(prescriptionNumber:any){
+    this.supabase.from('Prescriptions').delete(prescriptionNumber).eq('Prescription_number', prescriptionNumber).then(r=>console.log(r))
+  }
 
 
 }

@@ -96,4 +96,9 @@ export class PrescriptionDetailsComponent implements OnInit {
     this.router.navigate(['prescription-page/showSaved'])
   }
 
+  delete() {
+    this.supabase.deletePrescription(this.prescriptionNumber.getNumber)
+    this.goBack()
+  }
+
 }
