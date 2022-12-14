@@ -1,4 +1,4 @@
-<h1>Create your prescription below</h1>
+<h1 id="center">Create your prescription below</h1>
 
 <!--error handling does not work-->
 <div>
@@ -65,12 +65,13 @@
                   </div>
                 </td>
                 <td>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </td>
                 <td>
                   <div>
                     <label>Patient DOB: &nbsp;</label>
                     <mat-form-field class="example-full-width">
-                      <input matInput type="text" formControlName="patient_dob" [(ngModel)]="getForm().Patient_DOB">
+                      <input matInput type="date" formControlName="patient_dob" [(ngModel)]="getForm().Patient_DOB">
                       <mat-error *ngIf="patient_dob.invalid && (patient_dob.dirty || patient_dob.touched)"
                                  class="error">
                         <mat-error *ngIf="patient_dob.errors?.['required']">
@@ -97,12 +98,7 @@
                   <div>
                     <label>Date: &nbsp;</label>
                     <mat-form-field class="example-full-width">
-                      <input matInput type="date" formControlName="date" [(ngModel)]="getForm().Date">
-                      <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="error">
-                        <mat-error *ngIf="date.errors?.['required']">
-                          Date is required!
-                        </mat-error>
-                      </mat-error>
+                      <input matInput type="date" formControlName="date" >
                     </mat-form-field>
                   </div>
                 </td>
@@ -152,19 +148,22 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <div>
+          <div data-html2canvas-ignore="true">
             <br/>
 
             <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
+            &nbsp;
             <button mat-raised-button (click)="savePrescription()" title="save medictaions">Save prescripton</button>
+            &nbsp;
             <button mat-raised-button (click)="goToSearchPage()" title="add medictaions">Add medications</button>
+            &nbsp;
             <button mat-flat-button color="accent" (click)="clearData()" title="delete">Delete prescription</button>
             <br><br>
             <br><br>
 
 
           </div>
-          <button mat-raised-button (click)="goBack()">Go back</button>
+          <button mat-raised-button (click)="goBack()" data-html2canvas-ignore="true">Go back</button>
         </div>
       </form>
     </div>

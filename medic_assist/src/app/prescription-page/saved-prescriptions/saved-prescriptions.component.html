@@ -20,7 +20,6 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns; let element"
       (click)="showDetails(element.Prescription_number)" routerLink="details" title="details"></tr>
-
 </table>
 
-<button mat-raised-button (click)="goBack()">Go back</button>
+<div> <button mat-raised-button (click)="goBack()">Go back</button></div>

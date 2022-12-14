@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {SupabaseService} from "../../supabaseService/supabase.service";
 import {PrescriptionNumberService} from "../../PrescriptionService/prescription-number.service";
 import { PrescriptionDetails} from "../../prescription.type";
 import {Router} from "@angular/router";
+import jsPDF from "jspdf";
 
 @Component({
   selector: 'app-prescription-details',
@@ -61,6 +62,35 @@ export class PrescriptionDetailsComponent implements OnInit {
     return arr[0]
   }
 
+
+  @ViewChild('content') content: ElementRef;
+
+  public SavePDF(): void {
+    let content = this.content.nativeElement;
+    let doc = new jsPDF('l', 'pt', 'a4');
+    let _elementHandlers =
+      {
+        '#editor': function (_element: any) {
+          return true;
+        }
+      };
+
+    doc.html(content, {
+      callback: () => {
+        doc.output('dataurlnewwindow');
+      }, x: 0, y: 0, html2canvas: {scale: 0.6}
+    });
+
+    /*
+    doc.fromHTML(content.innerHTML,15,15,{
+
+      'width':190,
+      'elementHandlers':_elementHandlers
+    });
+    */
+
+    doc.save('test.pdf');
+  }
 
   goBack(){
     this.router.navigate(['prescription-page/showSaved'])

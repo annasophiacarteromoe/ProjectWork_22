@@ -26,14 +26,14 @@
 
   </td>
   <td id="searchTd">
-    <mat-slide-toggle [(ngModel)]="_searchBySymptoms" (change)=promtSearchBy() class="switch">Searching
+    <mat-slide-toggle [(ngModel)]="_searchBySymptoms" (change)=searchByToggle() class="switch">Searching
       by: {{content}} </mat-slide-toggle>
   </td>
 
 </table>
 
-
-<table mat-table [dataSource]="filteredOptions">
+<div id="center"><mat-spinner *ngIf="!filteredOptions"></mat-spinner></div>
+<table mat-table [dataSource]="filteredOptions" *ngIf="filteredOptions">
 
 
   <ng-container matColumnDef="Medication_name">
