@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 export class ContactPageComponent implements OnInit {
 
   constructor(private service: ContactService, private jumper: Router, private dialogRef: MatDialog) { }
- 
+
   ReportForm!: FormGroup;
   QuestionAnswer: QuestionInterface[] = [];
   FilteredQuestionAnswer: QuestionInterface[] = [];
@@ -111,7 +111,7 @@ export class ContactPageComponent implements OnInit {
     console.log(this.search);
     this.FliterIdx = [];
     this.FilteredQuestionAnswer = [];
-    
+
     if(this.search == ""){
       this.Filtered = false;
       return;
@@ -120,7 +120,7 @@ export class ContactPageComponent implements OnInit {
       this.Filtered = true;
     }
 
-    
+
 
     if(this.selections == "name"){
       console.log("Search By name");
@@ -146,7 +146,10 @@ export class ContactPageComponent implements OnInit {
   }
 
   reset(){
-    window.location.reload();
+    // window.location.reload();
+    this.search = ''
+    this.filter()
   }
+
 
 }
