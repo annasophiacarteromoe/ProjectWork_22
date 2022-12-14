@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-page',
@@ -7,13 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   ImagePath: string;
-  
-  constructor() { 
+
+  constructor(private router: Router) {
     //image location
     this.ImagePath = '/assets/type-2-diabetes.png'
   }
 
   ngOnInit(): void {
   }
-
 }
