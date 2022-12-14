@@ -1,5 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {Component, OnInit, ViewChild, ElementRef, ModuleWithComponentFactories} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {
   AbstractControl,
@@ -36,7 +41,8 @@ export class NewPrescriptionComponent implements OnInit {
     patient_name: ['', [Validators.required]],
     patient_dob: ['', [Validators.required]],
     comments: [''],
-    date: new FormControl((new Date()).toISOString().substring(0,10))
+    date: date: new FormControl((new Date()).toISOString().substring(0,10))
+    dosage: ['', Validators.required]
   });
 
   constructor(private router: Router,
@@ -53,12 +59,17 @@ export class NewPrescriptionComponent implements OnInit {
   displayedColumns: string[] = ['Medication_name', 'Description', 'Warning', 'Symptoms', 'Dosage', 'delete']
   dosageDict = new Map<number, string>()
   dosageArray: string[] = []
+  flag = true
   dateVal = new Date()
+
 
   onSubmit() {
     console.log(this.newPrescriptionForm.value)
   }
 
+  get dosage_val():FormControl{
+    return this.newPrescriptionForm.get('dosage') as FormControl
+  }
   get doctor_name(): FormControl {
     return this.newPrescriptionForm.get("doctor_name") as FormControl;
   }
@@ -133,17 +144,24 @@ export class NewPrescriptionComponent implements OnInit {
     this.dosageDict.clear()
     this.dosageArray = []
     this.formArray.clear()
+  }
 
+  onDelete(med: any) {
+    this.medsArray.deleteMed(med)
+    this.dosageDict.delete(med)
+    this.setFlag = false
+    setTimeout(()=>{
+      this.setFlag = true
+    },500)
 
   }
 
-  onDelete(med: string) {
-    // this.arrayService.deleteMed(med)
-
+  set setFlag(bool: boolean) {
+    this.flag = bool
   }
-
 
   @ViewChild('content') content: ElementRef;
+
 
   public SavePDF(): void {
     let content = this.content.nativeElement;
