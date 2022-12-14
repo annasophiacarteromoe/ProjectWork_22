@@ -78,7 +78,7 @@ export class PrescriptionDetailsComponent implements OnInit {
     doc.html(content, {
       callback: () => {
         doc.output('dataurlnewwindow');
-      }, x: 30, y: 30, html2canvas: {scale: 0.8}
+      }, x: 0, y: 0, html2canvas: {scale: 0.6}
     });
 
     /*

@@ -1,5 +1,5 @@
 <p></p>
-
+<div class="container" id="content" #content>
 <table mat-table [dataSource]="prescriptionArray">
 
   <ng-container matColumnDef="Provider_number">
@@ -64,6 +64,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumnsMeds;"></tr>
 </table>
 <div>
-  <button mat-raised-button (click)="goBack()">Go back</button>
-  <button mat-raised-button (click)="SavePDF()">Save PDF</button>
+  <button mat-raised-button (click)="goBack()" data-html2canvas-ignore="true">Go back</button>
+  <button mat-raised-button (click)="SavePDF()" data-html2canvas-ignore="true">Save PDF</button>
+</div>
 </div>
