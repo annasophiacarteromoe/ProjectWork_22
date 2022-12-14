@@ -41,7 +41,7 @@ export class NewPrescriptionComponent implements OnInit {
     patient_name: ['', [Validators.required]],
     patient_dob: ['', [Validators.required]],
     comments: [''],
-    date: date: new FormControl((new Date()).toISOString().substring(0,10))
+    date: new FormControl((new Date()).toISOString().substring(0,10)),
     dosage: ['', Validators.required]
   });
 
