@@ -13,6 +13,6 @@
 
 ## How to start a MedicAssist
 
-1. In a console/terminal go to the medicassist folder
+1. In a console/terminal go to the medic_assist folder
 2. In a console/terminal type 'npm install'
 3. In a console/terminal type 'npm start'
