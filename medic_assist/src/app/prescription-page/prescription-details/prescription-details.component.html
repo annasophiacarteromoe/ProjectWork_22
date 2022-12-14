@@ -64,7 +64,9 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumnsMeds;"></tr>
 </table>
 <div>
-  <button mat-raised-button (click)="goBack()" data-html2canvas-ignore="true">Go back</button>
-  <button mat-raised-button (click)="SavePDF()" data-html2canvas-ignore="true">Save PDF</button>
+  <button mat-raised-button (click)="goBack()" data-html2canvas-ignore="true">Go back</button>&nbsp;&nbsp;
+  <button mat-raised-button (click)="SavePDF()" data-html2canvas-ignore="true">Save PDF</button>&nbsp;&nbsp;
+  <button mat-raised-button color="accent" (click)="delete()">Delete</button>
 </div>
 </div>
+<p><br/><br/></p>
